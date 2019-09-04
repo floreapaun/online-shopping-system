@@ -5,6 +5,32 @@ $(document).ready(function(){
 	product();
     
     producthome();
+
+    checkforlink();
+    
+    function  checkforlink() {
+		var urlParams = new URLSearchParams(window.location.search);
+		console.log(urlParams.get('cidl')); // true
+		if (urlParams.get('cidl')) {
+			if (window.location.pathname == '/store.php') {
+				$("#get_product").html("<h3>Loading...</h3>");
+				event.preventDefault();
+				var cid = urlParams.get('cidl')
+
+				$.ajax({
+					url		:	"action.php",
+					method	:	"POST",
+					data	:	{get_seleted_Category:1,cat_id:cid},
+					success	:	function(data){
+						$("#get_product").html(data);
+						if($("body").width() < 480){
+							$("body").scrollTop(683);
+						}
+					}
+				})
+			}
+		}
+	}
     
     
 	//cat() is a funtion fetching category record from database whenever page is load
@@ -136,6 +162,29 @@ $(document).ready(function(){
 		})
 	
 	})
+
+	$(".category-link").click( function() {
+		var cidl = $(this).attr('cidl');
+		if (window.location.pathname == '/store.php') {
+			$("#get_product").html("<h3>Loading...</h3>");
+			event.preventDefault();
+			var cid = cidl;
+
+			$.ajax({
+				url		:	"action.php",
+				method	:	"POST",
+				data	:	{get_seleted_Category:1,cat_id:cid},
+				success	:	function(data){
+					$("#get_product").html(data);
+					if($("body").width() < 480){
+						$("body").scrollTop(683);
+					}
+				}
+			})
+		} else {
+			window.location = '/store.php?cidl=' + cidl;
+		}
+	});
 	/*
 		At the top of page there is a search box with search button when user put name of product then we will take the user 
 		given string and with the help of sql query we will match user given string to our database keywords column then matched product 
