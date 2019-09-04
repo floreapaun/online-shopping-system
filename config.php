@@ -9,7 +9,7 @@ $errors = array();
 
 // connect to the database
 define('DB_SERVER', 'localhost');
-   define('DB_USERNAME', 'PuneethReddy');
+   define('DB_USERNAME', 'root');
    define('DB_PASSWORD', '');
    define('DB_DATABASE', 'ecommerece');
    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
@@ -70,7 +70,7 @@ if (isset($_POST['login_user'])) {
   	array_push($errors, "email is required");
   }
   if (empty($password)) {
-  	array_push($errors, "Password is required");
+  	array_push($errors, "PassCategoriird is required");
   }
 
   if (count($errors) == 0) {
