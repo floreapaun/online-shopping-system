@@ -45,15 +45,15 @@ include "topheader.php";
          <div class="col-md-14">
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title"> Products List</h4>
+                <h4 class="card-title"> Lista produse</h4>
                 
               </div>
               <div class="card-body">
                 <div class="table-responsive ps">
                   <table class="table tablesorter " id="page1">
                     <thead class=" text-primary">
-                      <tr><th>Image</th><th>Name</th><th>Price</th><th>
-	<a class=" btn btn-primary" href="addproduct.php">Add New</a></th></tr></thead>
+                      <tr><th>Imagine</th><th>Nume</th><th>Pret</th><th>
+	<a class=" btn btn-primary" href="addproduct.php">Adauga produs</a></th></tr></thead>
                     <tbody>
                       <?php 
 
@@ -65,7 +65,7 @@ include "topheader.php";
                         <td>$price</td>
                         <td>
 
-                        <a class=' btn btn-success' href='clothes_list.php?product_id=$product_id&action=delete'>Delete</a>
+                        <a class=' btn btn-success' href='clothes_list.php?product_id=$product_id&action=delete'>Sterge</a>
                         </td></tr>";
                         }
 

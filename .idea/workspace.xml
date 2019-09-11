@@ -3,13 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="60a5c0e1-0e01-4986-8f5a-c74923081d00" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/action.php" beforeDir="false" afterPath="$PROJECT_DIR$/action.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/body.php" beforeDir="false" afterPath="$PROJECT_DIR$/body.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/checkout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homeaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/homeaction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product.php" beforeDir="false" afterPath="$PROJECT_DIR$/product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/addproduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/addproduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/adduser.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/adduser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/edituser.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/edituser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/electroniclist.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/electroniclist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/manageuser.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/manageuser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/orders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/productlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/productlist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/sidenav.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/sidenav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/topheader.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/topheader.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +64,7 @@
       <workItem from="1568049321734" duration="8757000" />
       <workItem from="1568136672234" duration="8911000" />
       <workItem from="1568186499469" duration="11000" />
-      <workItem from="1568224684359" duration="3979000" />
+      <workItem from="1568224684359" duration="6697000" />
     </task>
     <servers />
   </component>

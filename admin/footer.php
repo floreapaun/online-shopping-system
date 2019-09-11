@@ -4,7 +4,7 @@
             <ul>
               <li>
                 <a href="">
-                  PuneethReddy
+                  Pagina administrare
                 </a>
               </li>
             </ul>
@@ -13,8 +13,7 @@
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by
-            <a href="" target="_blank">Puneethreddy</a> for a better web.
+            </script>, toate drepturile rezervate
           </div>
           <!-- your footer here -->
         </div>
