@@ -421,7 +421,7 @@ $(document).ready(function(){
 		$('.total').each(function(){
 			net_total += ($(this).val()-0);
 		})
-		$('.net_total').html("Total : $ " +net_total);
+		$('.net_total').html("Total : " +net_total + " LEI");
 
 	})
 	//Change Quantity end here 
@@ -503,7 +503,7 @@ $(document).ready(function(){
 		$('.total').each(function(){
 			net_total += ($(this).val()-0);
 		})
-		$('.net_total').html("Total : $ " +net_total);
+		$('.net_total').html("Total : " +net_total + " LEI");
 	}
 
 	//remove product from cart
