@@ -188,15 +188,15 @@ session_start();
 						<!-- SEARCH BAR -->
 						<div class="col-md-6">
 							<div class="header-search">
-								<form>
-									<select class="input-select">
+								<div class="header-search-bar">
+									<!--<select class="input-select">
 										<option value="0">Categorii</option>
 										<option value="1">Men</option>
 										<option value="1">Women </option>
-									</select>
+									</select>-->
 									<input class="input" id="search" type="text" placeholder="">
 									<button type="submit" id="search_btn" class="search-btn">Cauta</button>
-								</form>
+								</div>
 							</div>
 						</div>
 						<!-- /SEARCH BAR -->
@@ -263,6 +263,7 @@ session_start();
 		<nav id='navigation'>
 			<!-- container -->
             <div class="container" id="get_category_home">
+
                 
             </div>
 				<!-- responsive-nav -->
