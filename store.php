@@ -1,6 +1,8 @@
 <?php
 include 'header.php';
 ?>
+
+
      <script id="jsbin-javascript">
 (function (global) {
 	if(typeof (global) === "undefined")
@@ -36,6 +38,7 @@ include 'header.php';
     };
 })(window);
 </script>
+
       <div class="main main-raised"> 
         
 		<div class="section">

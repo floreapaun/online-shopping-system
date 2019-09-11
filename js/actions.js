@@ -30,6 +30,48 @@ $(document).ready(function(){
 				})
 			}
 		}
+		if (urlParams.get('keyword') && urlParams.get('search')) {
+			if (window.location.pathname == '/store.php') {
+				var keyword = urlParams.get('keyword');
+				var search = urlParams.get('search');
+				$("#get_product").html("<h3>Loading...</h3>");
+
+				if(keyword != ""){
+					$.ajax({
+						url		:	"action.php",
+						method	:	"POST",
+						data	:	{search:search,keyword:keyword},
+						success	:	function(data){
+							$("#get_product").html(data);
+							if($("body").width() < 480){
+								$("body").scrollTop(683);
+							}
+						}
+					})
+				}
+			}
+		}
+		if (urlParams.get('get_seleted_Category') && urlParams.get('cat_id')) {
+			console.log("FLOREA E CEL MAI MARE PARLIT");
+			if (window.location.pathname == '/store.php') {
+				var get_seleted_Category = urlParams.get('get_seleted_Category');
+				var cat_id = urlParams.get('cat_id');
+				$("#get_product").html("<h3>Loading...</h3>");
+				event.preventDefault();
+
+				$.ajax({
+					url: "homeaction.php",
+					method: "POST",
+					data: {get_seleted_Category: get_seleted_Category, cat_id: cat_id},
+					success: function (data) {
+						$("#get_product").html(data);
+						if ($("body").width() < 480) {
+							$("body").scrollTop(683);
+						}
+					}
+				})
+			}
+		}
 	}
     
     
@@ -122,24 +164,30 @@ $(document).ready(function(){
 		})
 	
 	})
-    $("body").delegate(".categoryhome","click",function(event){
-		$("#get_product").html("<h3>Loading...</h3>");
-		event.preventDefault();
+	$("body").delegate(".categoryhome","click",function(event) {
 		var cid = $(this).attr('cid');
-		
+		if (window.location.pathname != '/store.php') {
+			console.log('/store.php?cat_id=' + cid + '&get_seleted_Category=1');
+			//location.replace("https://www.w3schools.com");
+			window.location.href = '/store.php?get_seleted_Category=1&cat_id=' + cid;
+		} else {
+			$("#get_product").html("<h3>Loading...</h3>");
+			event.preventDefault();
+
 			$.ajax({
-			url		:	"homeaction.php",
-			method	:	"POST",
-			data	:	{get_seleted_Category:1,cat_id:cid},
-			success	:	function(data){
-				$("#get_product").html(data);
-				if($("body").width() < 480){
-					$("body").scrollTop(683);
+				url: "homeaction.php",
+				method: "POST",
+				data: {get_seleted_Category: 1, cat_id: cid},
+				success: function (data) {
+					$("#get_product").html(data);
+					if ($("body").width() < 480) {
+						$("body").scrollTop(683);
+					}
 				}
-			}
-		})
-	
-	})
+			})
+
+		}
+	});
 
 	/*	when page is load successfully then there is a list of brands when user click on brand we will get brand id and 
 		according to brand id we will show products
@@ -191,20 +239,32 @@ $(document).ready(function(){
 		we will show 
 	*/
 	$("#search_btn").click(function(){
-		$("#get_product").html("<h3>Loading...</h3>");
+
+		console.log(window.location.pathname);
 		var keyword = $("#search").val();
-		if(keyword != ""){
-			$.ajax({
-			url		:	"action.php",
-			method	:	"POST",
-			data	:	{search:1,keyword:keyword},
-			success	:	function(data){ 
-				$("#get_product").html(data);
-				if($("body").width() < 480){
-					$("body").scrollTop(683);
-				}
+		console.log(keyword);
+
+		if (window.location.pathname == '/store.php') {
+			console.log('Parleala');
+			$("#get_product").html("<h3>Loading...</h3>");
+
+			if(keyword != ""){
+				$.ajax({
+					url		:	"action.php",
+					method	:	"POST",
+					data	:	{search:1,keyword:keyword},
+					success	:	function(data){
+						$("#get_product").html(data);
+						if($("body").width() < 480){
+							$("body").scrollTop(683);
+						}
+					}
+				})
 			}
-		})
+		} else {
+			//console.log('Ce pula mea');
+			var keyword = $("#search").val();
+			window.location = '/store.php?keyword=' + keyword + '&search=1';
 		}
 	})
 	//end
@@ -361,7 +421,7 @@ $(document).ready(function(){
 		$('.total').each(function(){
 			net_total += ($(this).val()-0);
 		})
-		$('.net_total').html("Total : $ " +net_total);
+		$('.net_total').html("Total : " +net_total + " LEI");
 
 	})
 	//Change Quantity end here 
@@ -443,7 +503,7 @@ $(document).ready(function(){
 		$('.total').each(function(){
 			net_total += ($(this).val()-0);
 		})
-		$('.net_total').html("Total : $ " +net_total);
+		$('.net_total').html("Total : " +net_total + " LEI");
 	}
 
 	//remove product from cart

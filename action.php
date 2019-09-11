@@ -128,7 +128,7 @@ if(isset($_POST["getProduct"])){
 									<div class='product-body'>
 										<p class='product-category'>$cat_name</p>
 										<h3 class='product-name header-cart-item-name'><a href='product.php?p=$pro_id'>$pro_title</a></h3>
-										<h4 class='product-price header-cart-item-info'>$pro_price<del class='product-old-price'>$990.00</del></h4>
+										<h4 class='product-price header-cart-item-info'>$pro_price LEI</h4>
 										<div class='product-rating'>
 											<i class='fa fa-star'></i>
 											<i class='fa fa-star'></i>
@@ -165,11 +165,10 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 	}else {
         
 		$keyword = $_POST["keyword"];
-        header('Location:store.php');
-		$sql = "SELECT * FROM products,categories WHERE product_cat=cat_id AND product_keywords LIKE '%$keyword%'";
-       
+        //header('Location:store.php');
+		$sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%'";
+		//exit($sql);
 	}
-	
 	$run_query = mysqli_query($con,$sql);
 	while($row=mysqli_fetch_array($run_query)){
 			$pro_id    = $row['product_id'];
@@ -194,7 +193,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 									<div class='product-body'>
 										<p class='product-category'>$cat_name</p>
 										<h3 class='product-name header-cart-item-name'><a href='product.php?p=$pro_id'>$pro_title</a></h3>
-										<h4 class='product-price header-cart-item-info'>$pro_price<del class='product-old-price'>$990.00</del></h4>
+										<h4 class='product-price header-cart-item-info'>$pro_price LEI</h4>
 										<div class='product-rating'>
 											<i class='fa fa-star'></i>
 											<i class='fa fa-star'></i>
@@ -370,9 +369,9 @@ if (isset($_POST["Common"])) {
 	               <table id="cart" class="table table-hover table-condensed" id="">
     				<thead>
 						<tr>
-							<th style="width:50%">Product</th>
-							<th style="width:10%">Price</th>
-							<th style="width:8%">Quantity</th>
+							<th style="width:50%">Produs</th>
+							<th style="width:10%">Pret</th>
+							<th style="width:8%">Cantitate</th>
 							<th style="width:7%" class="text-center">Subtotal</th>
 							<th style="width:10%"></th>
 						</tr>
@@ -385,6 +384,7 @@ if (isset($_POST["Common"])) {
 					$product_id = $row["product_id"];
 					$product_title = $row["product_title"];
 					$product_price = $row["product_price"];
+					$product_description = $row["product_desc"];
 					$product_image = $row["product_image"];
 					$cart_item_id = $row["id"];
 					$qty = $row["qty"];
@@ -401,7 +401,7 @@ if (isset($_POST["Common"])) {
 									</div>
 									<div class="col-sm-6">
 										<div style="max-width=50px;">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+										<p>$product_description</p>
 										</div>
 									</div>
 									
@@ -432,7 +432,7 @@ if (isset($_POST["Common"])) {
 				<tfoot>
 					
 					<tr>
-						<td><a href="store.php" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+						<td><a href="store.php" class="btn btn-warning"><i class="fa fa-angle-left"></i> Inapoi la magazin</a></td>
 						<td colspan="2" class="hidden-xs"></td>
 						<td class="hidden-xs text-center"><b class="net_total" ></b></td>
 						<div id="issessionset"></div>
@@ -442,7 +442,7 @@ if (isset($_POST["Common"])) {
 				if (!isset($_SESSION["uid"])) {
 					echo '
 					
-							<a href="" data-toggle="modal" data-target="#Modal_register" class="btn btn-success">Ready to Checkout</a></td>
+							<a href="" data-toggle="modal" data-target="#Modal_register" class="btn btn-success">Comanda</a></td>
 								</tr>
 							</tfoot>
 				
@@ -477,7 +477,7 @@ if (isset($_POST["Common"])) {
 									<input type="hidden" name="cancel_return" value="http://localhost/myfiles/public_html/cancel.php"/>
 									<input type="hidden" name="currency_code" value="USD"/>
 									<input type="hidden" name="custom" value="'.$_SESSION["uid"].'"/>
-									<input type="submit" id="submit" name="login_user_with_product" name="submit" class="btn btn-success" value="Ready to Checkout">
+									<input type="submit" id="submit" name="login_user_with_product" name="submit" class="btn btn-success" value="Comanda">
 									</form></td>
 									
 									</tr>

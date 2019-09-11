@@ -175,7 +175,7 @@ session_start();
 						<!-- LOGO -->
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="#" class="logo">
+								<a href="/" class="logo">
 								<font style="font-style:normal; font-size: 33px;color: aliceblue;font-family: serif">
                                         Roma Shop
                                     </font>
@@ -188,15 +188,15 @@ session_start();
 						<!-- SEARCH BAR -->
 						<div class="col-md-6">
 							<div class="header-search">
-								<form>
-									<select class="input-select">
+								<div class="header-search-bar">
+									<!--<select class="input-select">
 										<option value="0">Categorii</option>
 										<option value="1">Men</option>
 										<option value="1">Women </option>
-									</select>
+									</select>-->
 									<input class="input" id="search" type="text" placeholder="">
 									<button type="submit" id="search_btn" class="search-btn">Cauta</button>
-								</form>
+								</div>
 							</div>
 						</div>
 						<!-- /SEARCH BAR -->
@@ -233,7 +233,7 @@ session_start();
 										</div>
 										
 										<div class="cart-btns">
-												<a href="cart.php" style="width:100%;"><i class="fa fa-edit"></i>  edit cart</a>
+												<a href="cart.php" style="width:100%;"><i class="fa fa-edit"></i>  Modifica cos</a>
 											
 										</div>
 									</div>
@@ -263,6 +263,7 @@ session_start();
 		<nav id='navigation'>
 			<!-- container -->
             <div class="container" id="get_category_home">
+
                 
             </div>
 				<!-- responsive-nav -->

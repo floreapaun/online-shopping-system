@@ -120,23 +120,23 @@ span.price {
 					<div class="row-checkout">
 					
 					<div class="col-50">
-						<h3>Billing Address</h3>
-						<label for="fname"><i class="fa fa-user" ></i> Full Name</label>
+						<h3>Adresa facturare</h3>
+						<label for="fname"><i class="fa fa-user" ></i> Nume Complet</label>
 						<input type="text" id="fname" class="form-control" name="firstname" pattern="^[a-zA-Z ]+$"  value="'.$row["first_name"].' '.$row["last_name"].'">
 						<label for="email"><i class="fa fa-envelope"></i> Email</label>
 						<input type="text" id="email" name="email" class="form-control" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9]+(\.[a-z]{2,4})$" value="'.$row["email"].'" required>
-						<label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+						<label for="adr"><i class="fa fa-address-card-o"></i> Adresa</label>
 						<input type="text" id="adr" name="address" class="form-control" value="'.$row["address1"].'" required>
-						<label for="city"><i class="fa fa-institution"></i> City</label>
+						<label for="city"><i class="fa fa-institution"></i> Oras</label>
 						<input type="text" id="city" name="city" class="form-control" value="'.$row["address2"].'" pattern="^[a-zA-Z ]+$" required>
 
 						<div class="row">
 						<div class="col-50">
-							<label for="state">State</label>
+							<label for="state">Judet</label>
 							<input type="text" id="state" name="state" class="form-control" pattern="^[a-zA-Z ]+$" required>
 						</div>
 						<div class="col-50">
-							<label for="zip">Zip</label>
+							<label for="zip">Cod postal</label>
 							<input type="text" id="zip" name="zip" class="form-control" pattern="^[0-9]{6}(?:-[0-9]{4})?$" required>
 						</div>
 						</div>
@@ -144,8 +144,8 @@ span.price {
 					
 					
 					<div class="col-50">
-						<h3>Payment</h3>
-						<label for="fname">Accepted Cards</label>
+						<h3>Metoda de plata</h3>
+						<label for="fname">Carduri acceptate</label>
 						<div class="icon-container">
 						<i class="fa fa-cc-visa" style="color:navy;"></i>
 						<i class="fa fa-cc-amex" style="color:blue;"></i>
@@ -154,14 +154,14 @@ span.price {
 						</div>
 						
 						
-						<label for="cname">Name on Card</label>
+						<label for="cname">Numele posesorului</label>
 						<input type="text" id="cname" name="cardname" class="form-control" pattern="^[a-zA-Z ]+$" required>
 						
 						<div class="form-group" id="card-number-field">
-                        <label for="cardNumber">Card Number</label>
+                        <label for="cardNumber">Numar card</label>
                         <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
                     </div>
-						<label for="expdate">Exp Date</label>
+						<label for="expdate">Data expirare</label>
 						<input type="text" id="expdate" name="expdate" class="form-control" pattern="^((0[1-9])|(1[0-2]))\/(\d{2})$" placeholder="12/22"required>
 						
 
@@ -176,7 +176,7 @@ span.price {
 					</div>
 					</div>
 					</div>
-					<label><input type="CHECKBOX" name="q" class="roomselect" value="conform" required> Shipping address same as billing
+					<label><input type="CHECKBOX" name="q" class="roomselect" value="conform" required> Adresa facturare identica cu adresa livrare
 					</label>';
 					$i=1;
 					$total=0;
@@ -202,7 +202,7 @@ span.price {
 				<input type="hidden" name="total_count" value="'.$total_count.'">
 					<input type="hidden" name="total_price" value="'.$total.'">
 					
-					<input type="submit" id="submit" value="Continue to checkout" class="checkout-btn">
+					<input type="submit" id="submit" value="Comanda" class="checkout-btn">
 				</form>
 				</div>
 			</div>
@@ -224,7 +224,7 @@ span.price {
 					$i=1;
 					echo
 					"
-					<h4>Cart 
+					<h4>Cos 
 					<span class='price' style='color:black'>
 					<i class='fa fa-shopping-cart'></i> 
 					<b>$total_count</b>
@@ -233,10 +233,10 @@ span.price {
 
 					<table class='table table-condensed'>
 					<thead><tr>
-					<th >no</th>
-					<th >product title</th>
-					<th >	qty	</th>
-					<th >	amount</th></tr>
+					<th >Nr.</th>
+					<th >Nume</th>
+					<th >	Cantitate	</th>
+					<th >	Pret</th></tr>
 					</thead>
 					<tbody>
 					";
@@ -268,7 +268,7 @@ span.price {
 				</table>
 				<hr>
 				
-				<h3>total<span class='price' style='color:black'><b>$$total</b></span></h3>";
+				<h3>Total<span class='price' style='color:black'><b>$total LEI</b></span></h3>";
 					
 				}
 				?>

@@ -8,11 +8,11 @@
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
                         <h3 class="footer-title">Despre noi</h3>
-                        <p>This is my Small Database Management System mini project</p>
+                        <p>Roma Enterprise Shop Company</p>
                         <ul class="footer-links">
-                            <li><a href="#"><i class="fa fa-map-marker"></i>Bangalore ,Kumbalagodu</a></li>
-                            <li><a href="#"><i class="fa fa-phone"></i>+91-9535688928</a></li>
-                            <li><a href="#"><i class="fa fa-envelope-o"></i>puneethreddy951@gmail.com</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker"></i>Ploiesti</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>0244 100 100</a></li>
+                            <li><a href="#"><i class="fa fa-envelope-o"></i>office@romashop.ro</a></li>
                         </ul>
                     </div>
                 </div>
