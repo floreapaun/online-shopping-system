@@ -4,7 +4,7 @@ $ip_add = getenv("REMOTE_ADDR");
 include "db.php";
 
 if(isset($_POST["categoryhome"])){
-	$category_query = "SELECT * FROM categories WHERE cat_id!=1";
+	$category_query = "SELECT * FROM categories;";
     
 	$run_query = mysqli_query($con,$category_query) or die(mysqli_error($con));
 
@@ -95,7 +95,7 @@ if(isset($_POST["getProducthome"])){
 										<h3 class='product-name'><a href='product.php?p=$pro_id'>$pro_title</a></h3>
 										<h4 class='product-price'>$pro_price</h4>
 									</div></a>
-								</div>
+					   </div>
                         
 			";
 		}

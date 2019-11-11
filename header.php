@@ -260,15 +260,10 @@ session_start();
 			<!-- /MAIN HEADER -->
 		</header>
 		<!-- /HEADER -->
-		<nav id='navigation'>
-			<!-- container -->
-            <div class="container" id="get_category_home">
 
-                
+		<nav id='navigation'>
+            <div class="container" id="get_category_home">
             </div>
-				<!-- responsive-nav -->
-				
-			<!-- /container -->
 		</nav>
             
 

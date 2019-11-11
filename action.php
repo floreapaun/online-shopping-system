@@ -2,6 +2,7 @@
 session_start();
 $ip_add = getenv("REMOTE_ADDR");
 include "db.php";
+
 if(isset($_POST["category"])){
 	$category_query = "SELECT * FROM categories";
     
@@ -45,6 +46,7 @@ if(isset($_POST["category"])){
 		echo "</div>";
 	}
 }
+
 if(isset($_POST["brand"])){
 	$brand_query = "SELECT * FROM brands";
 	$run_query = mysqli_query($con,$brand_query);

@@ -3,9 +3,7 @@ $(document).ready(function(){
     cathome();
 	brand();
 	product();
-    
-    producthome();
-
+    //producthome();
     checkforlink();
     
     function  checkforlink() {
@@ -75,13 +73,15 @@ $(document).ready(function(){
 	}
     
     
-	//cat() is a funtion fetching category record from database whenever page is load
+	//cat() is a function fetching category record from database whenever page is load
+    //#get_category element is part of store.php file
 	function cat(){
 		$.ajax({
 			url	:	"action.php",
 			method:	"POST",
 			data	:	{category:1},
 			success	:	function(data){
+                console.log("content put to #get_category");
 				$("#get_category").html(data);
 				
 			}
@@ -98,7 +98,8 @@ $(document).ready(function(){
 			}
 		})
 	}
-	//brand() is a funtion fetching brand record from database whenever page is load
+	//brand() is a function fetching brand record from database whenever page is load
+    //#get_brand element is part of store.php file
 	function brand(){
 		$.ajax({
 			url	:	"action.php",
@@ -110,6 +111,7 @@ $(document).ready(function(){
 		})
 	}
 	//product() is a funtion fetching product record from database whenever page is load
+    //#get_product element is part of store.php file
 		function product(){
 		$.ajax({
 			url	:	"action.php",
