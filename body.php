@@ -377,13 +377,6 @@
             while ($row = $result->fetch_array()){
                 $cat_rows[] = $row;
             }
-            
-            /*
-            echo $rows[0]["cat_title"];
-            foreach ($rows as $row) {
-                echo $row["cat_title"];
-            }
-            */
         ?>
 
 		<!-- SECTION -->
@@ -414,10 +407,6 @@
                                 while ($row = $result->fetch_array()){
                                     $cat1_prod_rows[] = $row;
                                 }
-
-                            //echo "v=" . $cat1_prod_rows[0]['product_id'];
-                            //echo "v=$cat1_prod_rows[0]['product_id']";
-                            //var_dump($cat1_prod_rows[0]['product_id']);
 
                             ?>
 
@@ -485,10 +474,6 @@
                         while ($row = $result->fetch_array()){
                             $cat2_prod_rows[] = $row;
                         }
-
-                    //echo "v=" . $cat1_prod_rows[0]['product_id'];
-                    //echo "v=$cat1_prod_rows[0]['product_id']";
-                    //var_dump($cat1_prod_rows[0]['product_id']);
 
                     ?>
 
@@ -564,10 +549,6 @@
                         while ($row = $result->fetch_array()){
                             $cat3_prod_rows[] = $row;
                         }
-
-                    //echo "v=" . $cat1_prod_rows[0]['product_id'];
-                    //echo "v=$cat1_prod_rows[0]['product_id']";
-                    //var_dump($cat1_prod_rows[0]['product_id']);
 
                     ?>
 
