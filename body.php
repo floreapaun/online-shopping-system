@@ -272,12 +272,14 @@
 						<div class="section-title">
 							<h3 class="title">Cele mai vandute</h3>
 							<div class="section-nav">
+                                <!--
 								<ul class="section-tab-nav tab-nav">
 									<li class="active"><a data-toggle="tab" href="#tab2">Formals</a></li>
 									<li><a data-toggle="tab" href="#tab2">Shirts</a></li>
 									<li><a data-toggle="tab" href="#tab2">T-Shirts</a></li>
 									<li><a data-toggle="tab" href="#tab2">Pants</a></li>
 								</ul>
+                                -->
 							</div>
 						</div>
 					</div>
@@ -368,6 +370,22 @@
 		</div>
 		<!-- /SECTION -->
 
+        <?php
+            //get the first three categories by id
+            $cat_query = "SELECT cat_id, cat_title FROM categories LIMIT 3;";   
+            $result = mysqli_query($con, $cat_query);
+            while ($row = $result->fetch_array()){
+                $cat_rows[] = $row;
+            }
+            
+            /*
+            echo $rows[0]["cat_title"];
+            foreach ($rows as $row) {
+                echo $row["cat_title"];
+            }
+            */
+        ?>
+
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
@@ -376,7 +394,7 @@
 				<div class="row">
 					<div class="col-md-4 col-xs-6">
 						<div class="section-title">
-							<h4 class="title">Cele mai vandute</h4>
+							<h4 class="title"> <?php echo $cat_rows[0]["cat_title"]; ?></h4>
 							<div class="section-nav">
 								<div id="slick-nav-3" class="products-slick-nav"></div>
 							</div>
@@ -384,58 +402,99 @@
 						
 
 						<div class="products-widget-slick" data-nav="#slick-nav-3">
+                            
+                            <?php
+                                $query = "SELECT products.product_id, products.product_image, products.product_title, 
+                                         products.product_price FROM products 
+                                         JOIN orders ON orders.product_id = products.product_id
+                                         WHERE products.product_cat = 1
+                                         ORDER BY orders.qty DESC LIMIT 4;";
+                               
+                                $result = mysqli_query($con, $query);
+                                while ($row = $result->fetch_array()){
+                                    $cat1_prod_rows[] = $row;
+                                }
+
+                            //echo "v=" . $cat1_prod_rows[0]['product_id'];
+                            //echo "v=$cat1_prod_rows[0]['product_id']";
+                            //var_dump($cat1_prod_rows[0]['product_id']);
+
+                            ?>
+
+
 							<div id="get_product_home">
-								<!-- product widget -->
+                                
+                               <?php
+                                    for ($i = 0; $i <= 1; $i++) {
+                                        echo "<div class='product-widget'>
+                                                <a href='product.php?p=" . $cat1_prod_rows[$i]['product_id'] . "'> 
+                                                    <div class='product-img'>
+                                                        <img src='product_images/" . $cat1_prod_rows[$i]['product_image'] . 
+                                                    "' alt=''></div>
+                                                    <div class='product-body'>
+                                                        <h3 class='product-name'>
+                                                            <a href='product.php?p=" . $cat1_prod_rows[$i]['product_id'] ."
+                                                            ''>" .  $cat1_prod_rows[$i]['product_title'] . "
+                                                            </a>
+                                                        </h3>
+                                                        <h4 class='product-price'>" . $cat1_prod_rows[$i]['product_price']
+                                                        . " lei</h4>
+                                                    </div>
+                                                </a>
+                                              </div>";
+                                    }
+                              ?>
 								
-								<!-- product widget -->
 							</div>
 
 							<div id="get_product_home2">
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product01.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- /product widget -->
 
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product02.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- /product widget -->
+                               <?php
+                                    for ($i = 2; $i <= 3; $i++) {
+                                        echo "<div class='product-widget'>
+                                                <a href='product.php?p=" . $cat1_prod_rows[$i]['product_id'] . "'> 
+                                                    <div class='product-img'>
+                                                        <img src='product_images/" . $cat1_prod_rows[$i]['product_image'] . 
+                                                    "' alt=''></div>
+                                                    <div class='product-body'>
+                                                        <h3 class='product-name'>
+                                                            <a href='product.php?p=" . $cat1_prod_rows[$i]['product_id'] ."
+                                                            ''>" .  $cat1_prod_rows[$i]['product_title'] . "
+                                                            </a>
+                                                        </h3>
+                                                        <h4 class='product-price'>" . $cat1_prod_rows[$i]['product_price']
+                                                        . " lei</h4>
+                                                    </div>
+                                                </a>
+                                              </div>";
+                                    }
+                              ?>
 
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product03.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- product widget -->
 							</div>
 						</div>
 					</div>
 
+                    <?php
+                        $query = "SELECT products.product_id, products.product_image, products.product_title, 
+                                 products.product_price FROM products 
+                                 JOIN orders ON orders.product_id = products.product_id
+                                 WHERE products.product_cat = 2
+                                 ORDER BY orders.qty DESC LIMIT 4;";
+                       
+                        $result = mysqli_query($con, $query);
+                        while ($row = $result->fetch_array()){
+                            $cat2_prod_rows[] = $row;
+                        }
+
+                    //echo "v=" . $cat1_prod_rows[0]['product_id'];
+                    //echo "v=$cat1_prod_rows[0]['product_id']";
+                    //var_dump($cat1_prod_rows[0]['product_id']);
+
+                    ?>
+
 					<div class="col-md-4 col-xs-6">
 						<div class="section-title">
-							<h4 class="title">Cele mai vandute</h4>
+							<h4 class="title"><?php echo $cat_rows[1]["cat_title"]; ?></h4>
 							<div class="section-nav">
 								<div id="slick-nav-4" class="products-slick-nav"></div>
 							</div>
@@ -443,85 +502,49 @@
 
 						<div class="products-widget-slick" data-nav="#slick-nav-4">
 							<div>
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product04.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product05.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product06.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- product widget -->
+                               <?php
+                                    for ($i = 0; $i <= 1; $i++) {
+                                        echo "<div class='product-widget'>
+                                                <a href='product.php?p=" . $cat2_prod_rows[$i]['product_id'] . "'> 
+                                                    <div class='product-img'>
+                                                        <img src='product_images/" . $cat2_prod_rows[$i]['product_image'] . 
+                                                    "' alt=''></div>
+                                                    <div class='product-body'>
+                                                        <h3 class='product-name'>
+                                                            <a href='product.php?p=" . $cat2_prod_rows[$i]['product_id'] ."
+                                                            ''>" .  $cat2_prod_rows[$i]['product_title'] . "
+                                                            </a>
+                                                        </h3>
+                                                        <h4 class='product-price'>" . $cat2_prod_rows[$i]['product_price']
+                                                        . " lei</h4>
+                                                    </div>
+                                                </a>
+                                              </div>";
+                                    }
+                              ?>
 							</div>
 
 							<div>
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product07.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product08.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product09.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- product widget -->
+                               <?php
+                                    for ($i = 2; $i <= 3; $i++) {
+                                        echo "<div class='product-widget'>
+                                                <a href='product.php?p=" . $cat2_prod_rows[$i]['product_id'] . "'> 
+                                                    <div class='product-img'>
+                                                        <img src='product_images/" . $cat2_prod_rows[$i]['product_image'] . 
+                                                    "' alt=''></div>
+                                                    <div class='product-body'>
+                                                        <h3 class='product-name'>
+                                                            <a href='product.php?p=" . $cat2_prod_rows[$i]['product_id'] ."
+                                                            ''>" .  $cat2_prod_rows[$i]['product_title'] . "
+                                                            </a>
+                                                        </h3>
+                                                        <h4 class='product-price'>" . $cat2_prod_rows[$i]['product_price']
+                                                        . " lei</h4>
+                                                    </div>
+                                                </a>
+                                              </div>";
+                                    }
+                              ?>
 							</div>
 						</div>
 					</div>
@@ -530,9 +553,27 @@
 					    
 					</div>
 
+                    <?php
+                        $query = "SELECT products.product_id, products.product_image, products.product_title, 
+                                 products.product_price FROM products 
+                                 JOIN orders ON orders.product_id = products.product_id
+                                 WHERE products.product_cat = 3
+                                 ORDER BY orders.qty DESC LIMIT 4;";
+                       
+                        $result = mysqli_query($con, $query);
+                        while ($row = $result->fetch_array()){
+                            $cat3_prod_rows[] = $row;
+                        }
+
+                    //echo "v=" . $cat1_prod_rows[0]['product_id'];
+                    //echo "v=$cat1_prod_rows[0]['product_id']";
+                    //var_dump($cat1_prod_rows[0]['product_id']);
+
+                    ?>
+
 					<div class="col-md-4 col-xs-6">
 						<div class="section-title">
-							<h4 class="title">Cele mai vandute</h4>
+							<h4 class="title"><?php echo $cat_rows[2]["cat_title"]; ?></h4>
 							<div class="section-nav">
 								<div id="slick-nav-5" class="products-slick-nav"></div>
 							</div>
@@ -540,86 +581,52 @@
 
 						<div class="products-widget-slick" data-nav="#slick-nav-5">
 							<div>
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product01.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- /product widget -->
 
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product02.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- /product widget -->
+                               <?php
+                                    for ($i = 0; $i <= 1; $i++) {
+                                        echo "<div class='product-widget'>
+                                                <a href='product.php?p=" . $cat3_prod_rows[$i]['product_id'] . "'> 
+                                                    <div class='product-img'>
+                                                        <img src='product_images/" . $cat3_prod_rows[$i]['product_image'] . 
+                                                    "' alt=''></div>
+                                                    <div class='product-body'>
+                                                        <h3 class='product-name'>
+                                                            <a href='product.php?p=" . $cat3_prod_rows[$i]['product_id'] ."
+                                                            ''>" .  $cat3_prod_rows[$i]['product_title'] . "
+                                                            </a>
+                                                        </h3>
+                                                        <h4 class='product-price'>" . $cat3_prod_rows[$i]['product_price']
+                                                        . " lei</h4>
+                                                    </div>
+                                                </a>
+                                              </div>";
+                                    }
+                              ?>
 
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product03.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- product widget -->
 							</div>
 
 							<div>
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product04.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- /product widget -->
 
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product05.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product06.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00</h4>
-									</div>
-								</div>
-								<!-- product widget -->
+                               <?php
+                                    for ($i = 2; $i <= 3; $i++) {
+                                        echo "<div class='product-widget'>
+                                                <a href='product.php?p=" . $cat3_prod_rows[$i]['product_id'] . "'> 
+                                                    <div class='product-img'>
+                                                        <img src='product_images/" . $cat3_prod_rows[$i]['product_image'] . 
+                                                    "' alt=''></div>
+                                                    <div class='product-body'>
+                                                        <h3 class='product-name'>
+                                                            <a href='product.php?p=" . $cat3_prod_rows[$i]['product_id'] ."
+                                                            ''>" .  $cat3_prod_rows[$i]['product_title'] . "
+                                                            </a>
+                                                        </h3>
+                                                        <h4 class='product-price'>" . $cat3_prod_rows[$i]['product_price']
+                                                        . " lei</h4>
+                                                    </div>
+                                                </a>
+                                              </div>";
+                                    }
+                              ?>
 							</div>
 						</div>
 					</div>
