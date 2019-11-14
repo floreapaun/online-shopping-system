@@ -2,13 +2,16 @@ $(document).ready(function(){
 	cat();
     cathome();
 	brand();
-	product();
+	//product();
     //producthome();
     checkforlink();
     
     function  checkforlink() {
 		var urlParams = new URLSearchParams(window.location.search);
 		console.log(urlParams.get('cidl')); // true
+        console.log("url params");
+        
+        /*
 		if (urlParams.get('cidl')) {
 			if (window.location.pathname == '/store.php') {
 				$("#get_product").html("<h3>Loading...</h3>");
@@ -49,25 +52,33 @@ $(document).ready(function(){
 				}
 			}
 		}
+        */
 		if (urlParams.get('get_seleted_Category') && urlParams.get('cat_id')) {
 			console.log("FLOREA E CEL MAI MARE PARLIT");
-			if (window.location.pathname == '/store.php') {
+            console.log("pathname: ");
+            console.log(window.location.pathname);
+			if (window.location.pathname === '/online-shopping-system/store.php') {
+                console.log("entered if");
 				var get_seleted_Category = urlParams.get('get_seleted_Category');
-				var cat_id = urlParams.get('cat_id');
-				$("#get_product").html("<h3>Loading...</h3>");
+				var cat_id = urlParams.get('cat_id');                
+                $("li[cid='" + cat_id + "']").toggleClass('active');
+                console.log(get_seleted_Category + " " + cat_id);
+				$("#get_product").html("<h3>Se incarca...</h3>");
 				event.preventDefault();
 
-				$.ajax({
-					url: "homeaction.php",
-					method: "POST",
-					data: {get_seleted_Category: get_seleted_Category, cat_id: cat_id},
-					success: function (data) {
-						$("#get_product").html(data);
-						if ($("body").width() < 480) {
-							$("body").scrollTop(683);
-						}
-					}
-				})
+                if (cat_id) {
+                    $.ajax({
+                        url: "homeaction.php",
+                        method: "POST",
+                        data: {get_seleted_Category: get_seleted_Category, cat_id: cat_id},
+                        success: function (data) {
+                            $("#get_product").html(data);
+                            if ($("body").width() < 480) {
+                                $("body").scrollTop(683);
+                            }
+                        }
+                    })
+                }
 			}
 		}
 	}
@@ -75,6 +86,7 @@ $(document).ready(function(){
     
 	//cat() is a function fetching category record from database whenever page is load
     //#get_category element is part of store.php file
+    //puts the categories with the products number in the sidebar
 	function cat(){
 		$.ajax({
 			url	:	"action.php",
@@ -87,6 +99,8 @@ $(document).ready(function(){
 			}
 		})
 	}
+
+    // puts the categories in the navigation bar
     function cathome(){
 		$.ajax({
 			url	:	"homeaction.php",
@@ -98,6 +112,7 @@ $(document).ready(function(){
 			}
 		})
 	}
+
 	//brand() is a function fetching brand record from database whenever page is load
     //#get_brand element is part of store.php file
 	function brand(){
@@ -112,7 +127,8 @@ $(document).ready(function(){
 	}
 	//product() is a funtion fetching product record from database whenever page is load
     //#get_product element is part of store.php file
-		function product(){
+	//puts products	
+    function product(){
 		$.ajax({
 			url	:	"action.php",
 			method:	"POST",
@@ -122,7 +138,7 @@ $(document).ready(function(){
 			}
 		})
 	}
-    gethomeproduts();
+    //gethomeproduts();
     function gethomeproduts(){
 		$.ajax({
 			url	:	"homeaction.php",
@@ -133,6 +149,8 @@ $(document).ready(function(){
 			}
 		})
 	}
+    
+    //was puting products in the top sold products section 
     function producthome(){
 		$.ajax({
 			url	:	"homeaction.php",
@@ -148,47 +166,47 @@ $(document).ready(function(){
 	/*	when page is load successfully then there is a list of categories when user click on category we will get category id and 
 		according to id we will show products
 	*/
-	$("body").delegate(".category","click",function(event){
-		$("#get_product").html("<h3>Loading...</h3>");
-		event.preventDefault();
+
+	$("body").on("click", ".categoryhome", function(event) {
+        
+        console.log("anchor inside categoryhome class has been clicked");
 		var cid = $(this).attr('cid');
-		
-			$.ajax({
-			url		:	"action.php",
-			method	:	"POST",
-			data	:	{get_seleted_Category:1,cat_id:cid},
-			success	:	function(data){
-				$("#get_product").html(data);
-				if($("body").width() < 480){
-					$("body").scrollTop(683);
-				}
-			}
-		})
-	
-	})
-	$("body").delegate(".categoryhome","click",function(event) {
-		var cid = $(this).attr('cid');
+
+        console.log($(this));
+
+        $(this).toggleClass('active');
+
+        console.log($(this));
+
 		if (window.location.pathname != '/store.php') {
 			console.log('/store.php?cat_id=' + cid + '&get_seleted_Category=1');
+            console.log("moved to store");
 			//location.replace("https://www.w3schools.com");
-			window.location.href = '/store.php?get_seleted_Category=1&cat_id=' + cid;
+			window.location.href = 'store.php?get_seleted_Category=1&cat_id=' + cid;
 		} else {
+
+			window.location.href = 'store.php?get_seleted_Category=0&cat_id=' + cid;
+            /*
 			$("#get_product").html("<h3>Loading...</h3>");
 			event.preventDefault();
+            if(cid) {
 
-			$.ajax({
-				url: "homeaction.php",
-				method: "POST",
-				data: {get_seleted_Category: 1, cat_id: cid},
-				success: function (data) {
-					$("#get_product").html(data);
-					if ($("body").width() < 480) {
-						$("body").scrollTop(683);
-					}
-				}
-			})
+                 $.ajax({
+                        url: "homeaction.php",
+                        method: "POST",
+                        data: {get_seleted_Category: 1, cat_id: cid},
+                        success: function (data) {
+                            $("#get_product").html(data);
+                            if ($("body").width() < 480) {
+                                $("body").scrollTop(683);
+                            }
+                        }
+                 })
 
-		}
+		   }
+            */
+
+        }
 	});
 
 	/*	when page is load successfully then there is a list of brands when user click on brand we will get brand id and 
@@ -213,6 +231,7 @@ $(document).ready(function(){
 	
 	})
 
+    /*
 	$(".category-link").click( function() {
 		var cidl = $(this).attr('cidl');
 		if (window.location.pathname == '/store.php') {
@@ -235,6 +254,8 @@ $(document).ready(function(){
 			window.location = '/store.php?cidl=' + cidl;
 		}
 	});
+    */
+
 	/*
 		At the top of page there is a search box with search button when user put name of product then we will take the user 
 		given string and with the help of sql query we will match user given string to our database keywords column then matched product 

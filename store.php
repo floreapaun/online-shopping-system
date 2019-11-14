@@ -79,8 +79,10 @@ include 'header.php';
 						<!-- /aside Widget -->
 
 						<!-- aside Widget -->
-						<div class="aside">
+   						<div class="aside">
+                            <!--
 							<h3 class="aside-title">Top produse vandute</h3>
+                            -->
 							<div id="get_product_home">
 								<!-- product widget -->
 								
@@ -93,31 +95,7 @@ include 'header.php';
 
 					<!-- STORE -->
 					<div id="store" class="col-md-9">
-						<!-- store top filter -->
-						<div class="store-filter clearfix">
-							<div class="store-sort">
-								<label>
-									Sorteaza:
-									<select class="input-select">
-										<option value="0">Popularitate</option>
-										<option value="1">Pozitie</option>
-									</select>
-								</label>
 
-								<label>
-									Arata:
-									<select class="input-select">
-										<option value="0">20</option>
-										<option value="1">50</option>
-									</select>
-								</label>
-							</div>
-							<ul class="store-grid">
-								<li class="active"><i class="fa fa-th"></i></li>
-								<li><a href="#"><i class="fa fa-th-list"></i></a></li>
-							</ul>
-						</div>
-						<!-- /store top filter -->
 
 						<!-- store products -->
 						<div class="row" id="product-row">
@@ -134,12 +112,7 @@ include 'header.php';
 
 						<!-- store bottom filter -->
 						<div class="store-filter clearfix">
-							<span class="store-qty">Showing 20-100 products</span>
-							<ul class="store-pagination" id="pageno">
-								<li ><a class="active" href="#aside">1</a></li>
-								
-								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-							</ul>
+							<span class="store-qty">Se arata toate produsele</span>
 						</div>
 						<!-- /store bottom filter -->
 					</div>
