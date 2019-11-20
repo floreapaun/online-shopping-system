@@ -149,6 +149,65 @@ if(isset($_POST["gethomeProduct"])){
     
 	}
     
+if (isset($_POST["cat_id"]) && isset($_POST["min_price"]) && isset($_POST["max_price"])){
+		$cat_id = $_POST["cat_id"];
+		$min_price = $_POST["min_price"];
+		$max_price = $_POST["max_price"];
+		$sql = "SELECT * FROM products
+                INNER JOIN categories ON products.product_cat = categories.cat_id
+                WHERE products.product_cat = '$cat_id' 
+                AND products.product_price BETWEEN $min_price AND $max_price";
+    
+        $run_query = mysqli_query($con,$sql);
+        $cnt = 0;
+        while($row=mysqli_fetch_array($run_query)){
+                $pro_id    = $row['product_id'];
+                $pro_cat   = $row['product_cat'];
+                $pro_brand = $row['product_brand'];
+                $pro_title = $row['product_title'];
+                $pro_price = $row['product_price'];
+                $pro_image = $row['product_image'];
+                $cat_name = $row["cat_title"];
+
+                if ($cnt == 0)
+                    echo "<div class='row'>";
+
+                echo "
+                        <div class='col-md-4'>
+                          <a href='product.php?p=$pro_id'>
+                            <div class='product'>
+                              <div class='product-img'>
+                                  <img  src='product_images/$pro_image' style='max-height: 170px;' alt=''>
+                              </div>
+                              <div class='product-body'>
+                                  <p class='product-category'>$cat_name</p>
+                                  <h3 class='product-name header-cart-item-name'>
+                                    <a href='product.php?p=$pro_id'>$pro_title</a>
+                                  </h3>
+                                  <h4 class='product-price header-cart-item-info'>$pro_price LEI</h4>
+                              </div>
+                              <div class='add-to-cart'>
+                                  <button pid='$pro_id' id='product' href='#' tabindex='0'
+                                   class='add-to-cart-btn'><i class='fa fa-shopping-cart'></i>Adauga in cos</button>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                     ";
+
+                $cnt++;
+                if ($cnt == 3) {
+                    echo "</div>";
+                    $cnt = 0;
+                }
+
+        }
+        
+        //close div if not closed
+        if ($cnt != 3) 
+            echo "</div>";
+}
+
 if(isset($_POST["get_seleted_Category"]) ||  isset($_POST["search"])){
 	if(isset($_POST["get_seleted_Category"])){
 		$id = $_POST["cat_id"];

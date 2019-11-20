@@ -130,7 +130,7 @@
 	});
 
 	var priceInputMax = document.getElementById('price-max'),
-			priceInputMin = document.getElementById('price-min');
+		priceInputMin = document.getElementById('price-min');
 
 	priceInputMax.addEventListener('change', function(){
 		updatePriceSlider($(this).parent() , this.value)
@@ -142,10 +142,8 @@
 
 	function updatePriceSlider(elem , value) {
 		if ( elem.hasClass('price-min') ) {
-			console.log('min')
 			priceSlider.noUiSlider.set([value, null]);
 		} else if ( elem.hasClass('price-max')) {
-			console.log('max')
 			priceSlider.noUiSlider.set([null, value]);
 		}
 	}
@@ -154,21 +152,36 @@
 	var priceSlider = document.getElementById('price-slider');
 	if (priceSlider) {
 		noUiSlider.create(priceSlider, {
-			start: [1, 999],
+			start: [1, 15000],
 			connect: true,
 			step: 1,
 			range: {
 				'min': 1,
-				'max': 999
+				'max': 15000 
 			}
 		});
 
 		priceSlider.noUiSlider.on('update', function( values, handle ) {
 			var value = values[handle];
 			handle ? priceInputMax.value = value : priceInputMin.value = value
+
+
+            //every time priceslider updates values we send ajax request to server
+            //for the products with price in range
+
+            
+		    var urlParams = new URLSearchParams(window.location.search);
+            
+            $.ajax({
+                url	:	"homeaction.php",
+                method	:	"POST",
+                data	:	{ cat_id : urlParams.get('cat_id'), min_price : values[0], max_price : values[1]},
+                success	:	function(data){
+                    $("#get_product").html(data);
+                }
+            })
+
 		});
 	}
-
-	
 
 })(jQuery);
