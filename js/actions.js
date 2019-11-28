@@ -1,103 +1,124 @@
 $(document).ready(function(){
-	cat();
-    cathome();
 	brand();
 	//product();
     //producthome();
-    checkforlink();
     
-    function  checkforlink() {
-		var urlParams = new URLSearchParams(window.location.search);
-		console.log(urlParams.get('cidl')); // true
-        console.log("url params");
-        
-        /*
-		if (urlParams.get('cidl')) {
-			if (window.location.pathname == '/store.php') {
-				$("#get_product").html("<h3>Loading...</h3>");
-				event.preventDefault();
-				var cid = urlParams.get('cidl')
+    checkforlink();
 
-				$.ajax({
-					url		:	"action.php",
-					method	:	"POST",
-					data	:	{get_seleted_Category:1,cat_id:cid},
-					success	:	function(data){
-						$("#get_product").html(data);
-						if($("body").width() < 480){
-							$("body").scrollTop(683);
-						}
-					}
-				})
-			}
-		}
-		if (urlParams.get('keyword') && urlParams.get('search')) {
-			if (window.location.pathname == '/store.php') {
-				var keyword = urlParams.get('keyword');
-				var search = urlParams.get('search');
-				$("#get_product").html("<h3>Loading...</h3>");
+    function checkforlink() {
+        cat().then(function(result) {
+            var urlParams = new URLSearchParams(window.location.search);
+            console.log(urlParams.get('cidl')); // true
+            console.log("url params");
+            
+            /*
+            if (urlParams.get('cidl')) {
+                if (window.location.pathname == '/store.php') {
+                    $("#get_product").html("<h3>Loading...</h3>");
+                    event.preventDefault();
+                    var cid = urlParams.get('cidl')
 
-				if(keyword != ""){
-					$.ajax({
-						url		:	"action.php",
-						method	:	"POST",
-						data	:	{search:search,keyword:keyword},
-						success	:	function(data){
-							$("#get_product").html(data);
-							if($("body").width() < 480){
-								$("body").scrollTop(683);
-							}
-						}
-					})
-				}
-			}
-		}
-        */
-		if (urlParams.get('get_seleted_Category') && urlParams.get('cat_id')) {
-			console.log("FLOREA E CEL MAI MARE PARLIT");
-            console.log("pathname: ");
-            console.log(window.location.pathname);
-			if (window.location.pathname === '/online-shopping-system/store.php') {
-                console.log("entered if");
-				var get_seleted_Category = urlParams.get('get_seleted_Category');
-				var cat_id = urlParams.get('cat_id');                
-                $("li[cid='" + cat_id + "']").toggleClass('active');
-                console.log(get_seleted_Category + " " + cat_id);
-				$("#get_product").html("<h3>Se incarca...</h3>");
-				event.preventDefault();
-
-                if (cat_id) {
                     $.ajax({
-                        url: "homeaction.php",
-                        method: "POST",
-                        data: {get_seleted_Category: get_seleted_Category, cat_id: cat_id},
-                        success: function (data) {
+                        url		:	"action.php",
+                        method	:	"POST",
+                        data	:	{get_seleted_Category:1,cat_id:cid},
+                        success	:	function(data){
                             $("#get_product").html(data);
-                            if ($("body").width() < 480) {
+                            if($("body").width() < 480){
                                 $("body").scrollTop(683);
                             }
                         }
                     })
                 }
-			}
-		}
-	}
-    
-    
+            }
+            if (urlParams.get('keyword') && urlParams.get('search')) {
+                if (window.location.pathname == '/store.php') {
+                    var keyword = urlParams.get('keyword');
+                    var search = urlParams.get('search');
+                    $("#get_product").html("<h3>Loading...</h3>");
+
+                    if(keyword != ""){
+                        $.ajax({
+                            url		:	"action.php",
+                            method	:	"POST",
+                            data	:	{search:search,keyword:keyword},
+                            success	:	function(data){
+                                $("#get_product").html(data);
+                                if($("body").width() < 480){
+                                    $("body").scrollTop(683);
+                                }
+                            }
+                        })
+                    }
+                }
+            }
+            */
+
+            if (urlParams.get('get_seleted_Category') && urlParams.get('cat_id')) {
+                console.log("pathname: ");
+                console.log(window.location.pathname);
+                if (window.location.pathname === '/online-shopping-system/store.php') {
+                    console.log("entered if");
+                    var get_seleted_Category = urlParams.get('get_seleted_Category');
+                    var cat_id = urlParams.get('cat_id');                
+
+                    //make active on navbar
+                    $("li[cid='" + cat_id + "']").toggleClass('active');
+
+                    //make active on sidebar
+                    $("div[cid='" + cat_id + "'] > a").css('color', 'blue');
+
+                    $("#get_product").html("<h3>Se incarca...</h3>");
+                    //event.preventDefault();
+
+                    if (cat_id) {
+                        $.ajax({
+                            url: "homeaction.php",
+                            method: "POST",
+                            data: {get_seleted_Category: get_seleted_Category, cat_id: cat_id},
+                            success: function (data) {
+                                $("#get_product").html(data);
+                                if ($("body").width() < 480) {
+                                    $("body").scrollTop(683);
+                                }
+                                $("div[cid='" + cat_id + "'] > a").css('color', 'blue');
+                            }
+                        })
+                    }
+                }
+            }
+        }, //ended promise success
+        
+        function(err) {
+          console.log(err); 
+        });
+        
+        
+    } //ended checkforlink function
+        
+
 	//cat() is a function fetching category record from database whenever page is load
     //#get_category element is part of store.php file
     //puts the categories with the products number in the sidebar
 	function cat(){
-		$.ajax({
-			url	:	"action.php",
-			method:	"POST",
-			data	:	{category:1},
-			success	:	function(data){
-                console.log("content put to #get_category");
-				$("#get_category").html(data);
-				
-			}
-		})
+        var promise = new Promise(function(resolve, reject) {
+            console.log("promise started");
+            $.ajax({
+                url	:	"action.php",
+                method:	"POST",
+                data	:	{category:1},
+                success	:	function(data){
+                    console.log("content put to #get_category");
+                    $("#get_category").html(data);
+                    if (data)
+                        resolve("categories retrieved!");
+                    else
+                        reject(Error("null content"));
+                }
+                
+            })
+        });
+        return promise;
 	}
 
     // puts the categories in the navigation bar
