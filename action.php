@@ -29,7 +29,7 @@ if(isset($_POST["category"])){
             
 			echo "
 					
-                    <div type='button' class='btn navbar-btn category' cid='$cid'>
+                    <div type='button' class='btn navbar-btn categoryhome' cid='$cid'>
 									
 									<a href='#'>
 										<span  ></span>

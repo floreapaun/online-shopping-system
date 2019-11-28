@@ -262,7 +262,7 @@ session_start();
 		<!-- /HEADER -->
 
 		<nav id='navigation'>
-            <div class="container" id="gecategory_home">
+            <div class="container">
             
                 <?php
                     
