@@ -146,6 +146,7 @@ $(document).ready(function(){
 			}
 		})
 	}
+
 	//product() is a funtion fetching product record from database whenever page is load
     //#get_product element is part of store.php file
 	//puts products	
@@ -233,9 +234,10 @@ $(document).ready(function(){
 	/*	when page is load successfully then there is a list of brands when user click on brand we will get brand id and 
 		according to brand id we will show products
 	*/
-	$("body").delegate(".selectBrand","click",function(event){
+
+	$("body").on("click", ".selectBrand", function(event){
 		event.preventDefault();
-		$("#get_product").html("<h3>Loading...</h3>");
+		$("#get_product").html("<h3>Se incarca...</h3>");
 		var bid = $(this).attr('bid');
 		
 			$.ajax({
