@@ -31,11 +31,18 @@ $(document).ready(function(){
                     })
                 }
             }
+            */
+
+
             if (urlParams.get('keyword') && urlParams.get('search')) {
-                if (window.location.pathname == '/store.php') {
+                console.log("entered checkforlink search");
+                console.log(window.location.pathname);
+                if (window.location.pathname == '/online-shopping-system/store.php') {
+                    console.log("entered if checkforlink search");
+                
                     var keyword = urlParams.get('keyword');
                     var search = urlParams.get('search');
-                    $("#get_product").html("<h3>Loading...</h3>");
+                    $("#get_product").html("<h3>Se incarca...</h3>");
 
                     if(keyword != ""){
                         $.ajax({
@@ -52,7 +59,7 @@ $(document).ready(function(){
                     }
                 }
             }
-            */
+            
 
             if (urlParams.get('get_seleted_Category') && urlParams.get('cat_id')) {
                 console.log("pathname: ");
@@ -286,6 +293,7 @@ $(document).ready(function(){
 	*/
 	$("#search_btn").click(function(){
 
+        console.log("search button has been clicked!");
 		console.log(window.location.pathname);
 		var keyword = $("#search").val();
 		console.log(keyword);
@@ -310,7 +318,7 @@ $(document).ready(function(){
 		} else {
 			//console.log('Ce pula mea');
 			var keyword = $("#search").val();
-			window.location = '/store.php?keyword=' + keyword + '&search=1';
+			window.location = 'store.php?keyword=' + keyword + '&search=1';
 		}
 	})
 	//end

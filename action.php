@@ -168,7 +168,11 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
         
 		$keyword = $_POST["keyword"];
         //header('Location:store.php');
-		$sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%'";
+		$sql = "SELECT * 
+                FROM products INNER JOIN categories
+                ON products.product_cat = categories.cat_id
+                WHERE product_keywords LIKE '%$keyword%'";
+
 		//exit($sql);
 	}
 	$run_query = mysqli_query($con,$sql);
