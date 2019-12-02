@@ -143,38 +143,6 @@ span.price {
 					</div>
 					
 					
-					<div class="col-50">
-						<h3>Metoda de plata</h3>
-						<label for="fname">Carduri acceptate</label>
-						<div class="icon-container">
-						<i class="fa fa-cc-visa" style="color:navy;"></i>
-						<i class="fa fa-cc-amex" style="color:blue;"></i>
-						<i class="fa fa-cc-mastercard" style="color:red;"></i>
-						<i class="fa fa-cc-discover" style="color:orange;"></i>
-						</div>
-						
-						
-						<label for="cname">Numele posesorului</label>
-						<input type="text" id="cname" name="cardname" class="form-control" pattern="^[a-zA-Z ]+$" required>
-						
-						<div class="form-group" id="card-number-field">
-                        <label for="cardNumber">Numar card</label>
-                        <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
-                    </div>
-						<label for="expdate">Data expirare</label>
-						<input type="text" id="expdate" name="expdate" class="form-control" pattern="^((0[1-9])|(1[0-2]))\/(\d{2})$" placeholder="12/22"required>
-						
-
-						<div class="row">
-						
-						<div class="col-50">
-							<div class="form-group CVV">
-								<label for="cvv">CVV</label>
-								<input type="text" class="form-control" name="cvv" id="cvv" required>
-						</div>
-						</div>
-					</div>
-					</div>
 					</div>
 					<label><input type="CHECKBOX" name="q" class="roomselect" value="conform" required> Adresa facturare identica cu adresa livrare
 					</label>';
