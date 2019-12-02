@@ -121,10 +121,6 @@ session_start();
 						<li><a href="#"><i class="fa fa-map-marker"></i>Ploiesti, Bulevardul Bucuresti, nr. 39</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						
-					<!--
-						<li><a href="#"><i class="fa fa-inr"></i> INR</a></li>
-					-->
 
 						<li><?php
                              include "db.php";
@@ -138,7 +134,7 @@ session_start();
                                   <a href="#" class="dropdownn" data-toggle="modal" data-target="#myModal" ><i class="fa fa-user-o"></i> Salut '.$row["first_name"].'</a>
                                   <div class="dropdownn-content">
                                     <a href="" data-toggle="modal" data-target="#profile"><i class="fa fa-user-circle" aria-hidden="true" ></i>Profilul meu</a>
-                                    <a href="logout.php"  ><i class="fa fa-sign-in" aria-hidden="true"></i>Iesi din cont</a>
+                                    <a href="logout.php"><i class="fa fa-sign-in" aria-hidden="true"></i>Iesi din cont</a>
                                     
                                   </div>
                                 </div>';
@@ -226,7 +222,7 @@ session_start();
 										<span>Cosul meu</span>
 										<div class="badge qty">5</div>
 									</a>
-									<div class="cart-dropdown"  >
+									<div class="cart-dropdown">
 										<div class="cart-list" id="cart_product">
 										
 											
@@ -238,7 +234,7 @@ session_start();
 										</div>
 									</div>
 										
-									</div>
+								</div>
 								<!-- /Cart -->
 
 								<!-- Menu Toogle -->
