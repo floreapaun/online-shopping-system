@@ -29,12 +29,6 @@ if (isset($_POST["login_user_with_product"])) {
 						
 								<form onsubmit="return false" id="login" class="login100-form ">
 									<div class="billing-details jumbotron">
-								  
-									<!--
-									<div class="section-title">
-                                        <h2 class="login100-form-title p-b-49" >Login Here</h2>
-                                    </div>
-									-->
                                     
                                     <div class="form-group">
                                        <label for="email">Email</label>
