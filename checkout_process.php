@@ -9,16 +9,12 @@ if (isset($_SESSION["uid"])) {
     $city = $_POST['city'];
     $state = $_POST['state'];
     $zip= $_POST['zip'];
-    $cardname= $_POST['cardname'];
-    $cardnumber= $_POST['cardNumber'];
-    $expdate= $_POST['expdate'];
-    $cvv= $_POST['cvv'];
     $user_id=$_SESSION["uid"];
-    $cardnumberstr=(string)$cardnumber;
     $total_count=$_POST['total_count'];
     $prod_total = $_POST['total_price'];
     
     
+    //get order_id of this cart command
     $sql0="SELECT order_id from `orders_info`";
     $runquery=mysqli_query($con,$sql0);
     if (mysqli_num_rows($runquery) == 0) {
@@ -35,9 +31,9 @@ if (isset($_SESSION["uid"])) {
 
 	$sql = "INSERT INTO `orders_info` 
 	(`order_id`,`user_id`,`f_name`, `email`,`address`, 
-	`city`, `state`, `zip`, `cardname`,`cardnumber`,`expdate`,`prod_count`,`total_amt`,`cvv`) 
+	`city`, `state`, `zip`,`prod_count`,`total_amt`) 
 	VALUES ($order_id, '$user_id','$f_name','$email', 
-    '$address', '$city', '$state', '$zip','$cardname','$cardnumberstr','$expdate','$total_count','$prod_total','$cvv')";
+    '$address', '$city', '$state', '$zip','$total_count','$prod_total')";
 
 
     if(mysqli_query($con,$sql)){
@@ -60,7 +56,7 @@ if (isset($_SESSION["uid"])) {
             if(mysqli_query($con,$sql1)){
                 $del_sql="DELETE from cart where user_id=$user_id";
                 if(mysqli_query($con,$del_sql)){
-                    echo"<script>window.location.href='store.php'</script>";
+                    echo"<script>document.cookie='ordercomplete=1';window.location.href='store.php'</script>";
                 }else{
                     echo(mysqli_error($con));
                 }
@@ -82,8 +78,6 @@ if (isset($_SESSION["uid"])) {
     echo"<script>window.location.href='index.php'</script>";
 }
 	
-
-
 
 
 ?>
