@@ -84,6 +84,10 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
             exit;
 
 		}else{
+                
+                //if regular user not found with form provided email and password
+                //check to see for the admin users
+                
                 $email = mysqli_real_escape_string($con,$_POST["email"]);
                 $password = $_POST["password"] ;
                 $sql = "SELECT * FROM admin_info WHERE admin_email = '$email'";
@@ -107,6 +111,8 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
                     exit;
 
                 }else{
+
+                    //if neither regular user or admin user is found
                     echo "<span style='color:red;'>Datele introduse nu sunt corecte!</span>";
                     exit();
                 }
