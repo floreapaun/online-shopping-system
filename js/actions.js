@@ -1,4 +1,23 @@
 $(document).ready(function(){
+    
+    displaySuccessOrderMsg();
+    
+    function displaySuccessOrderMsg() {
+        console.log("x");
+    
+        if (window.location.pathname == '/online-shopping-system/store.php') {
+            console.log("x");
+            if (document.cookie.split(';').filter((item) => item.includes('ordercomplete=1')).length) {
+                var str = "	<div class='alert alert-success'>" +
+                          "	<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a> " +
+                          "	<b>Comanda trimisa inspre aprobare! Veti fi contactat de un operator!</b> </div>";
+                $('#product_msg').html(str);
+                document.cookie="ordercomplete=0";
+            }
+        }
+    }
+    
+        
 	brand();
 	//product();
     //producthome();
@@ -336,18 +355,17 @@ $(document).ready(function(){
 		$.ajax({
 			url	:	"login.php",
 			method:	"POST",
-			data	:$("#login").serialize(),
+			data	: $("#login").serialize(),
 			success	:function(data){
-				console.log("received answer from login.php")
+				console.log("received answer from login.php: ")
 				if(data == "login_success"){
 					console.log("login_success")
+                    document.cookie = "auth=1";
 					window.location.href = "index.php";
 				}else if(data == "cart_login"){
 					window.location.href = "cart.php";
 				}else{
-
 					console.log("received undefined answer from login.php")
-					//console.log(data)
 					$("#e_msg").html(data);
 					//$(".overlay").hide();
 				}
@@ -402,23 +420,34 @@ $(document).ready(function(){
 	//Get User Information before checkout end here
 
 	//Add Product into Cart
-	$("body").delegate("#product","click",function(event){
-		var pid = $(this).attr("pid");
-		
+	$("body").on("click", "#product", function(event){
 		event.preventDefault();
-		$(".overlay").show();
-		$.ajax({
-			url : "action.php",
-			method : "POST",
-			data : {addToCart:1,proId:pid,},
-			success : function(data){
-				count_item();
-				getCartItem();
-				$('#product_msg').html(data);
-				$('.overlay').hide();
-			}
-		})
+		var pid = $(this).attr("pid");
+
+        if (document.cookie.split(';').filter((item) => item.includes('auth=1')).length) {
+            console.log('product will be put into the cart')
+            $(".overlay").show();
+            $.ajax({
+                url : "action.php",
+                method : "POST",
+                data : {addToCart:1,proId:pid,},
+                success : function(data){
+                    count_item();
+                    getCartItem();
+                    $('#product_msg').html(data);
+                    $('.overlay').hide();
+                }
+            })
+        }
+        else {
+			var str = "	<div class='alert alert-danger'>" +
+					  "	<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a> " +
+					  "	<b>Trebuie sa fii autentificat pentru a adauga in cos!</b> </div>";
+            $('#product_msg').html(str);
+        }
+
 	})
+
 	//Add Product into Cart End Here
 	//Count user cart items funtion
 	count_item();
