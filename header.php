@@ -201,20 +201,6 @@ session_start();
 						<div class="col-md-3 clearfix">
 							<div class="header-ctn">
 								
-							
-								
-								<!-- Wishlist -->
-								<!--
-								<div>
-									<a href="https://github.com/puneethreddyhc">
-										<i class="fa fa-github"></i>
-										<span>Github</span>
-										
-									</a>
-								</div>
-								-->
-								<!-- /Wishlist -->
-
 								<!-- Cart -->
 								<div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
@@ -243,6 +229,7 @@ session_start();
 										<i class="fa fa-bars"></i>
 										<span>Menu</span>
 									</a>
+
 								</div>
 								<!-- /Menu Toogle -->
 							</div>
