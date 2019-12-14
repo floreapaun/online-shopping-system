@@ -49,9 +49,7 @@
                                     $i++;
 
                                     echo "
-                                                            
-                                                      <li class='category-link' cidl='$cid'>
-                                                                            
+                                                      <li class='categoryhome' cid='$cid'>
                                                         <a href='#'>
                                                         <span></span>
                                                           $cat_name
