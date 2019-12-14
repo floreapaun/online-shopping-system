@@ -128,7 +128,11 @@ session_start();
                                 $sql = "SELECT first_name FROM user_info WHERE user_id='$_SESSION[uid]'";
                                 $query = mysqli_query($con,$sql);
                                 $row=mysqli_fetch_array($query);
-                                
+
+                                //admin is hard-coded with id 1
+                                if ($_SESSION["uid"] == 1)
+                                    $row["first_name"] = "Admin";
+
                                 echo '
                                <div class="dropdownn">
                                   <a href="#" class="dropdownn" data-toggle="modal" data-target="#myModal" ><i class="fa fa-user-o"></i> Salut '.$row["first_name"].'</a>
