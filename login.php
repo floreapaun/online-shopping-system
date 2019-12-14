@@ -22,14 +22,15 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 	$count = mysqli_num_rows($run_query);
 	$row = mysqli_fetch_array($run_query);
 	
-	$_SESSION["uid"] = $row["user_id"];
-	$_SESSION["name"] = $row["first_name"];
-	$ip_add = getenv("REMOTE_ADDR");
-	//we have created a cookie in login_form.php page so if that cookie is available means user is not login
         
 	//if user record is available in database then $count will be equal to 1
 	if($count == 1 && password_verify($password, $row['password'])){
 			   
+            $_SESSION["uid"] = $row["user_id"];
+            $_SESSION["name"] = $row["first_name"];
+            $ip_add = getenv("REMOTE_ADDR");
+	        //we have created a cookie in login_form.php page so if that cookie is available means user is not login
+
 			//var_dump("string");
 			//echo "user ok!";
 			if (isset($_COOKIE["product_list"])) {
