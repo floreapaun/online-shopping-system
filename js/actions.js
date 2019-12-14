@@ -318,7 +318,6 @@ $(document).ready(function(){
 		console.log(keyword);
 
 		if (window.location.pathname == '/store.php') {
-			console.log('Parleala');
 			$("#get_product").html("<h3>Loading...</h3>");
 
 			if(keyword != ""){
