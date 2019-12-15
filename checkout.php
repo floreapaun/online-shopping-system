@@ -127,25 +127,17 @@ span.price {
 						<input type="text" id="email" name="email" class="form-control" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9]+(\.[a-z]{2,4})$" value="'.$row["email"].'" required>
 						<label for="adr"><i class="fa fa-address-card-o"></i> Adresa</label>
 						<input type="text" id="adr" name="address" class="form-control" value="'.$row["address1"].'" required>
-						<label for="city"><i class="fa fa-institution"></i> Oras</label>
-						<input type="text" id="city" name="city" class="form-control" value="'.$row["address2"].'" pattern="^[a-zA-Z ]+$" required>
 
 						<div class="row">
 						<div class="col-50">
-							<label for="state">Judet</label>
-							<input type="text" id="state" name="state" class="form-control" pattern="^[a-zA-Z ]+$" required>
-						</div>
-						<div class="col-50">
-							<label for="zip">Cod postal</label>
-							<input type="text" id="zip" name="zip" class="form-control" pattern="^[0-9]{6}(?:-[0-9]{4})?$" required>
+							<label for="zip"><i class="fa fa-institution"></i>Cod postal</label>
+							<input type="text" id="zip" name="zip" class="form-control" value="'.$row["address2"].'" required>
 						</div>
 						</div>
 					</div>
 					
 					
-					</div>
-					<label><input type="CHECKBOX" name="q" class="roomselect" value="conform" required> Adresa facturare identica cu adresa livrare
-					</label>';
+					</div>';
 					$i=1;
 					$total=0;
 					$total_count=$_POST['total_count'];

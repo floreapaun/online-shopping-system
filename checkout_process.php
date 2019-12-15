@@ -6,8 +6,6 @@ if (isset($_SESSION["uid"])) {
 	$f_name = $_POST["firstname"];
 	$email = $_POST['email'];
 	$address = $_POST['address'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
     $zip= $_POST['zip'];
     $user_id=$_SESSION["uid"];
     $total_count=$_POST['total_count'];
@@ -31,9 +29,9 @@ if (isset($_SESSION["uid"])) {
 
 	$sql = "INSERT INTO `orders_info` 
 	(`order_id`,`user_id`,`f_name`, `email`,`address`, 
-	`city`, `state`, `zip`,`prod_count`,`total_amt`) 
+	`zip`,`prod_count`,`total_amt`) 
 	VALUES ($order_id, '$user_id','$f_name','$email', 
-    '$address', '$city', '$state', '$zip','$total_count','$prod_total')";
+    '$address', '$zip','$total_count','$prod_total')";
 
 
     if(mysqli_query($con,$sql)){
