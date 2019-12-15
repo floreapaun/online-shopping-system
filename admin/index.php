@@ -27,7 +27,7 @@ include "topheader.php";
                 <div class="table-responsive ps">
                   <table class="table table-hover tablesorter " id="">
                     <thead class=" text-primary">
-                        <tr><th>ID</th><th>Nume</th><th>Prenume</th><th>Email</th><th>Parola</th><th>Numar telefon</th><th>Adresa</th><th>Oras</th>
+                        <tr><th>ID</th><th>Nume</th><th>Prenume</th><th>Email</th><th>Numar telefon</th><th>Adresa</th><th>Cod postal</th>
                     </tr></thead>
                     <tbody>
                       <?php 
@@ -35,7 +35,7 @@ include "topheader.php";
 
                         while(list($user_id,$first_name,$last_name,$email,$password,$phone,$address1,$address2)=mysqli_fetch_array($result))
                         {	
-                        echo "<tr><td>$user_id</td><td>$first_name</td><td>$last_name</td><td>$email</td><td>$password</td><td>$phone</td><td>$address1</td><td>$address2</td>
+                        echo "<tr><td>$user_id</td><td>$first_name</td><td>$last_name</td><td>$email</td><td>$phone</td><td>$address1</td><td>$address2</td>
 
                         </tr>";
                         }
