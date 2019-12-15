@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Hello, world!</title>
+  <title>Panou administrare</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -35,12 +35,6 @@
             <a class="nav-link" href="index.php">
               <i class="material-icons">dashboard</i>
               <p>Panou informatii</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="adduser.php">
-              <i class="material-icons">person</i>
-              <p>Adauga utilizator</p>
             </a>
           </li>
           <li class="nav-item">
