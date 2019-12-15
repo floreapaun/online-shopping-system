@@ -48,7 +48,7 @@
                                         <input class="input form-control input-borders" type="text" name="address1" id="address1" placeholder="Adresa">
                                     </div>
                                     <div class="form-group">
-                                        <input class="input form-control input-borders" type="text" name="address2" id="address2" placeholder="Oras">
+                                        <input class="input form-control input-borders" type="text" name="address2" id="address2" placeholder="Cod postal">
                                     </div>
                                     
                                     
