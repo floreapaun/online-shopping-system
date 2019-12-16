@@ -8,9 +8,8 @@ if(isset($_POST['btn_save']))
 $product_name=$_POST['product_name'];
 $details=$_POST['details'];
 $price=$_POST['price'];
-$c_price=$_POST['c_price'];
-$product_type=$_POST['product_type'];
-$brand=$_POST['brand'];
+$product_cat=$_POST['cat_id'];
+$brand=$_POST['brand_id'];
 $tags=$_POST['tags'];
 
 //picture coding
@@ -21,15 +20,21 @@ $picture_size=$_FILES['picture']['size'];
 
 if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="image/png" || $picture_type=="image/gif")
 {
-	if($picture_size<=50000000)
-	
-		$pic_name=time()."_".$picture_name;
-		move_uploaded_file($picture_tmp_name,"../product_images/".$pic_name);
+	if ($picture_size<=50000000) {	
+    	move_uploaded_file($picture_tmp_name,"../product_images/".$picture_name);
 		
-mysqli_query($con,"insert into products (product_cat, product_brand,product_title,product_price, product_desc, product_image,product_keywords) values ('$product_type','$brand','$product_name','$price','$details','$pic_name','$tags')") or die ("query incorrect");
+        mysqli_query($con,"insert into products (product_cat, product_brand,product_title,product_price, 
+                           product_desc, product_image,product_keywords) 
+                           values ('$product_cat','$brand','$product_name','$price','$details','$picture_name','$tags')") 
+                           or die ("insert product query with error");
 
- header("location: sumit_form.php?success=1");
+        header("location: submit_form.php?success=1");
+    }
+    else
+        header("location: submit_form.php?success=2");
 }
+else
+    header("location: submit_form.php?success=3");
 
 mysqli_close($con);
 }
@@ -96,14 +101,30 @@ include "topheader.php";
                     
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>Categorie produs</label>
-                        <input type="number" id="product_type" name="product_type" required="[1-6]" class="form-control">
+                        <label for="cat_select">Categorie produs</label>
+                        <select name="cat_id" id="cat_select" class="form-control">
+                            <?php
+                              $result = mysqli_query($con,"select cat_id, cat_title from categories")
+                                        or die ("query for categories failed");
+                              while (list($cat_id, $cat_title) = mysqli_fetch_array($result)) {
+                                  echo '<option value="' . $cat_id . '">' . $cat_title . '</option>"';
+                              }
+                            ?>
+                        </select>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="">Brand produs</label>
-                        <input type="number" id="brand" name="brand" required class="form-control">
+                        <select name="brand_id" id="brand_select" class="form-control">
+                            <?php
+                              $result = mysqli_query($con,"select brand_id, brand_title from brands")
+                                        or die ("query for brands failed");
+                              while (list($brand_id, $brand_title) = mysqli_fetch_array($result)) {
+                                  echo '<option value="' . $brand_id . '">' . $brand_title . '</option>"';
+                              }
+                            ?>
+                        </select>
                       </div>
                     </div>
                      
