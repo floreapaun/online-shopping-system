@@ -11,10 +11,26 @@ function myfunction()
 </script>
 </head>
 <body onLoad="myfunction()">
-<form action="index.php" method="post" id="myform">
-	<input hidden="" type="text" name="success" value="<?php echo"$link";?>"> 
-    <button hidden="" type="submit" id="success" data-modal="success"></button>
-</form>
+
+    <?php if ($link !=4) { ?>
+
+        <form action="addproduct.php" method="post" id="myform">
+            <input hidden="" type="text" name="success" value="<?php echo"$link";?>"> 
+            <button hidden="" type="submit" id="success" data-modal="success"></button>
+        </form>
+    
+    <?php 
+    
+    } 
+    else {
+
+    ?>
+        <form action="productlist.php" method="post" id="myform">
+            <input hidden="" type="text" name="success" value="<?php echo"$link";?>"> 
+            <button hidden="" type="submit" id="success" data-modal="success"></button>
+        </form>
+
+    <?php } ?>
 
 <h1 style="padding-left:400px; padding-top:200px;"><img src="../images/loading-x.gif" /></h1>
 </body>

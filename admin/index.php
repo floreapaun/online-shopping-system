@@ -9,25 +9,6 @@ include "topheader.php";
       <div class="content">
         <div class="container-fluid">
          <div class="panel-body">
-            <a>
-                <?php  //success message
-                if(isset($_POST['success'])) {
-                    $success = $_POST["success"];
-                    if (intval($success) == 1)
-                        echo "<h2 style='color:#0C0'>Produsul a fost adaugat cu 
-                              success! &nbsp;&nbsp;  
-                              <span class='glyphicon glyphicon-ok'></h1></span>";
-                    if (intval($success) == 2)
-                        echo "<h2 style='color:#0C0'>Produsul nu a fost adaugat! 
-                              Imaginea e prea mare! &nbsp;&nbsp;  
-                              <span class='glyphicon glyphicon-ok'></h1></span>";
-                    if (intval($success) == 3)
-                        echo "<h2 style='color:#0C0'>Produsul nu a fost adaugat! 
-                              Imaginea nu are formatul jpg/png/gif! &nbsp;&nbsp; 
-                              <span class='glyphicon glyphicon-ok'></h1></span>";
-                }
-                ?>
-            </a>
                 </div>
                 <div class="col-md-14">
             <div class="card ">

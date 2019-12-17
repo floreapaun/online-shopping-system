@@ -1,7 +1,8 @@
- <?php
+<?php
 session_start();
 include("../db.php");
 error_reporting(0);
+
 if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 {
 $product_id=$_GET['product_id'];
@@ -20,6 +21,7 @@ else
 {}
 /*this is delet query*/
 mysqli_query($con,"delete from products where product_id='$product_id'")or die("query is incorrect...");
+header("location: submit_form.php?success=4");
 }
 
 ///pagination
@@ -41,18 +43,39 @@ include "topheader.php";
       <div class="content">
         <div class="container-fluid">
         
-        
-         <div class="col-md-14">
+          <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8 text-center">
+              <?php
+                  if(isset($_POST['success'])) {
+                      $success = $_POST["success"];
+                      if (intval($success) == 4)
+                          echo "<h3 style='color:#0C0'>Produsul a fost sters! &nbsp;&nbsp;  
+                                <span class='glyphicon glyphicon-remove'></span></h3>";
+                  }
+              ?>
+            </div>
+            <div class="col-md-2">
+            </div>
+
+          </div>       
+
+         <div class="col-md-12">
+
+
             <div class="card ">
+
+
               <div class="card-header card-header-primary">
                 <h4 class="card-title"> Lista produse</h4>
-                
               </div>
               <div class="card-body">
                 <div class="table-responsive ps">
                   <table class="table tablesorter " id="page1">
                     <thead class=" text-primary">
-                      <tr><th>Imagine</th><th>Nume</th><th>Pret</th><th>
+                      <tr><th>Imagine</th><th>Nume</th><th>Pret (lei)</th><th>
 	<a class=" btn btn-primary" href="addproduct.php">Adauga produs</a></th></tr></thead>
                     <tbody>
                       <?php 
@@ -65,7 +88,7 @@ include "topheader.php";
                         <td>$price</td>
                         <td>
 
-                        <a class=' btn btn-success' href='clothes_list.php?product_id=$product_id&action=delete'>Sterge</a>
+                        <a class=' btn btn-success' href='productlist.php?product_id=$product_id&action=delete'>Sterge</a>
                         </td></tr>";
                         }
 

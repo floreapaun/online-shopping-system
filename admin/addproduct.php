@@ -1,6 +1,7 @@
-  <?php
+<?php
 session_start();
 include("../db.php");
+
 
 
 if(isset($_POST['btn_save']))
@@ -45,6 +46,32 @@ include "topheader.php";
       <div class="content">
         <div class="container-fluid">
           <form action="" method="post" type="form" name="form" enctype="multipart/form-data">
+
+          <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8 text-center">
+              <?php
+                if(isset($_POST['success'])) {
+                    $success = $_POST["success"];
+                    if (intval($success) == 1)
+                        echo "<h3 style='color:#0C0'>Produsul a fost adaugat! &nbsp;&nbsp;  
+                              <span class='glyphicon glyphicon-ok'></h3></span>";
+                    if (intval($success) == 2)
+                        echo "<h3 style='color:##FF000'>Produsul nu a fost adaugat! 
+                              Imaginea e prea mare! &nbsp;&nbsp;  
+                              <span class='glyphicon glyphicon-exclamation-sign'></h3></span>";
+                    if (intval($success) == 3)
+                        echo "<h3 style='color:##FF000'>Produsul nu a fost adaugat! 
+                              Imaginea nu are formatul jpg/png/gif! &nbsp;&nbsp; 
+                              <span class='glyphicon glyphicon-exclamation-sign'></h3></span>";
+                }
+              ?>
+            </div>
+            <div class="col-md-2">
+            </div>
+          </div>
+
           <div class="row">
           
                 
