@@ -12,7 +12,7 @@ function myfunction()
 </head>
 <body onLoad="myfunction()">
 
-    <?php if ($link !=4) { ?>
+    <?php if ($link < 4) { ?>
 
         <form action="addproduct.php" method="post" id="myform">
             <input hidden="" type="text" name="success" value="<?php echo"$link";?>"> 
@@ -22,10 +22,23 @@ function myfunction()
     <?php 
     
     } 
-    else {
+    if ($link == 4) {
 
     ?>
         <form action="productlist.php" method="post" id="myform">
+            <input hidden="" type="text" name="success" value="<?php echo"$link";?>"> 
+            <button hidden="" type="submit" id="success" data-modal="success"></button>
+        </form>
+
+    <?php } ?>
+
+    <?php 
+    
+     
+    if ($link == 5) {
+
+    ?>
+        <form action="orders.php" method="post" id="myform">
             <input hidden="" type="text" name="success" value="<?php echo"$link";?>"> 
             <button hidden="" type="submit" id="success" data-modal="success"></button>
         </form>

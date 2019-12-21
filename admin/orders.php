@@ -9,7 +9,9 @@ if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 $order_id=$_GET['order_id'];
 
 /*this is delet query*/
-mysqli_query($con,"delete from orders where order_id='$order_id'")or die("delete query is incorrect...");
+mysqli_query($con,"delete from order_products where order_id='$order_id'")or die("delete query is incorrect...");
+mysqli_query($con,"delete from orders_info where order_id='$order_id'")or die("delete query is incorrect...");
+header("location: submit_form.php?success=5");
 } 
 
 ///pagination
@@ -30,6 +32,26 @@ include "topheader.php";
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
+
+          <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8 text-center">
+              <?php
+                  if(isset($_POST['success'])) {
+                      $success = $_POST["success"];
+                      if (intval($success) == 5)
+                          echo "<h3 style='color:#0C0'>Comanda a fost stearsa! &nbsp;&nbsp;  
+                                <span class='glyphicon glyphicon-remove'></span></h3>";
+                  }
+              ?>
+            </div>
+            <div class="col-md-2">
+            </div>
+
+          </div>       
+
           <!-- your content here -->
           <div class="col-md-14">
             <div class="card ">
@@ -40,21 +62,57 @@ include "topheader.php";
                 <div class="table-responsive ps">
                   <table class="table table-hover tablesorter " id="">
                     <thead class=" text-primary">
-                      <tr><th>Nume client</th><th>Produse</th><th>Numar telefon | Email</th><th>Adresa</th><th>Detalii</th><th>Adresa livrare</th><th>Timp</th>
-                    </tr></thead>
+                      <tr><th>Nume client</th><th>Email</th><th>Cod postal</th><th>ID Comanda</th>
+                          <th>ID Produs X Cantitate</th><th>Cost (lei)</th>
+                      </tr>
+                    </thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($con,"select order_id, product_title, first_name, mobile, email, address1, address2, product_price,address2, qty from orders,products,user_info where orders.product_id=products.product_id and user_info.user_id=orders.user_id Limit $page1,10")or die ("query 1 incorrect.....");
+                        $sql = "SELECT first_name, email, orders_info.zip, orders_info.order_id, order_products.product_id, 
+		                        qty, total_amt FROM order_products 
+                                INNER JOIN orders_info ON order_products.order_id = orders_info.order_id 
+                                INNER JOIN user_info ON user_info.user_id = orders_info.user_id; 
+                               "; 
+                        $result = mysqli_query($con, $sql); 
+                        $rows = mysqli_fetch_all($result, MYSQLI_NUM);
 
-                        while(list($order_id,$p_names,$cus_name,$contact_no,$email,$address,$country,$details,$zip_code,$time,$quantity)=mysqli_fetch_array($result))
-                        {	
-                        echo "<tr><td>$cus_name</td><td>$p_names</td><td>$email<br>$contact_no</td><td>$address<br>ZIP: $zip_code<br>$country</td><td>$details</td><td>$quantity</td><td>$time</td>
+                        //print_r($arr);
 
-                        <td>
-                        <a class=' btn btn-danger' href='orders.php?order_id=$order_id&action=delete'>Sterge</a>
-                        </td></tr>";
-                        }
-                        ?>
+                        $prod_ids = "";
+
+                        for ($i = 0; $i < count($rows)-1; $i++) {
+                            $current = $rows[$i][3];
+                            $next = $rows[$i+1][3];
+
+                            //each order has at least one product 
+                            //for each order we add product and its quantity           
+                            $prod_ids .= $rows[$i][4] . ' x ' . $rows[$i][5] . ', ';
+
+                            //we put the sum we reached so far if next order is bigger
+                            if ($current < $next) {
+                                echo "<tr><td>" . $rows[$i][0] . "</td><td>" . $rows[$i][1] . "</td><td>" .
+                                $rows[$i][2] . "</td><td>" .$rows[$i][3] . "</td>
+                                      <td>" . substr(trim($prod_ids), 0, -1) . "</td><td>" . $rows[$i][6] . "</td>
+                                      <td>
+                                      <a class=' btn btn-danger' href='orders.php?order_id=" . $rows[$i][3] . 
+                                        "&action=delete'>Sterge</a>
+                                      </td>
+                                      </tr>";
+                                $prod_ids = "";
+                            }
+                         }
+                        
+                        $prod_ids .= $rows[$i][4] . ' x ' . $rows[$i][5] . ', ';
+                        echo "<tr><td>" . $rows[$i][0] . "</td><td>" . $rows[$i][1] . "</td><td>" .
+                        $rows[$i][2] . "</td><td>" .$rows[$i][3] . "</td>
+                              <td>" . substr(trim($prod_ids), 0, -1) . "</td><td>" . $rows[$i][6] . "</td>
+                              <td>
+                              <a class=' btn btn-danger' href='orders.php?order_id=" . $rows[$i][3] . 
+                                "&action=delete'>Sterge</a>
+                              </td>
+                              </tr>";
+
+                      ?>
                     </tbody>
                   </table>
                   
