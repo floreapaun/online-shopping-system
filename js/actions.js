@@ -486,8 +486,9 @@ $(document).ready(function(){
 		('.total').each() this is loop funtion repeat for class .total and in every repetation we will perform sum operation of class .total value 
 		and then show the result into class .net_total
 	*/
-	$("body").delegate(".qty","keyup",function(event){
+	$("body").on("keyup", ".qty" ,function(event){
 		event.preventDefault();
+        console.log(".qty changed");
 		var row = $(this).parent().parent();
 		var price = row.find('.price').val();
 		var qty = row.find('.qty').val();
@@ -497,6 +498,7 @@ $(document).ready(function(){
 		if (qty < 1) {
 			qty = 1;
 		};
+
 		var total = price * qty;
 		row.find('.total').val(total);
 		var net_total=0;
