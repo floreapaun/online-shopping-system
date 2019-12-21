@@ -260,14 +260,16 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 				";
 			}
 		}
-		}else{
+        }
+        //if user is not logged in
+        else{
 			$sql = "SELECT id FROM cart WHERE ip_add = '$ip_add' AND p_id = '$p_id' AND user_id = -1";
 			$query = mysqli_query($con,$sql);
 			if (mysqli_num_rows($query) > 0) {
 				echo "
 					<div class='alert alert-warning'>
 							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-							<b>Product is already added into the cart Continue Shopping..!</b>
+							<b>Produsul a fost deja adaugat in cos!</b>
 					</div>";
 					exit();
 			}
@@ -278,7 +280,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 				echo "
 					<div class='alert alert-success'>
 						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Your product is Added Successfully..!</b>
+						<b>Produsul a fost adaugat in cos!</b>
 					</div>
 				";
 				exit();
@@ -364,7 +366,7 @@ if (isset($_POST["Common"])) {
 			
 			exit();
 		}
-	}
+	} //end if isset($_POST["getCartItem"])
 	
     
     
@@ -422,7 +424,7 @@ if (isset($_POST["Common"])) {
 				            <input type="hidden" name="" value="'.$cart_item_id.'"/>
 							<td data-th="Price"><input type="text" class="form-control price" value="'.$product_price.'" readonly="readonly"></td>
 							<td data-th="Quantity">
-								<input type="text" class="form-control qty" value="'.$qty.'" >
+								<input type="text" id="' . $product_id . '" class="form-control qty" value="'.$qty.'" >
 							</td>
 							<td data-th="Subtotal" class="text-center"><input type="text" class="form-control total" value="'.$product_price.'" readonly="readonly"></td>
 							<td class="actions" data-th="">
@@ -436,7 +438,7 @@ if (isset($_POST["Common"])) {
 					
                             
                             ';
-				}
+				} //end while
 				
 				echo '</tbody>
 				<tfoot>
@@ -482,11 +484,7 @@ if (isset($_POST["Common"])) {
 								}
 							  
 							echo   
-								'<input type="hidden" name="return" value="http://localhost/myfiles/public_html/payment_success.php"/>
-					                <input type="hidden" name="notify_url" value="http://localhost/myfiles/public_html/payment_success.php">
-									<input type="hidden" name="cancel_return" value="http://localhost/myfiles/public_html/cancel.php"/>
-									<input type="hidden" name="currency_code" value="USD"/>
-									<input type="hidden" name="custom" value="'.$_SESSION["uid"].'"/>
+								'   <input type="hidden" name="custom" value="'.$_SESSION["uid"].'"/>
 									<input type="submit" id="submit" name="login_user_with_product" name="submit" class="btn btn-success" value="Comanda">
 									</form></td>
 									
