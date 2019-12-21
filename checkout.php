@@ -122,9 +122,9 @@ span.price {
 					<div class="col-50">
 						<h3>Adresa facturare</h3>
 						<label for="fname"><i class="fa fa-user" ></i> Nume Complet</label>
-						<input type="text" id="fname" class="form-control" name="firstname" pattern="^[a-zA-Z ]+$"  value="'.$row["first_name"].' '.$row["last_name"].'">
+						<input type="text" id="fname" class="form-control" name="firstname" pattern="^[a-zA-Z ]+$"  value="'.$row["first_name"].' '.$row["last_name"].'" disabled>
 						<label for="email"><i class="fa fa-envelope"></i> Email</label>
-						<input type="text" id="email" name="email" class="form-control" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9]+(\.[a-z]{2,4})$" value="'.$row["email"].'" required>
+						<input type="text" id="email" name="email" class="form-control" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9]+(\.[a-z]{2,4})$" value="'.$row["email"].'" required disabled>
 						<label for="adr"><i class="fa fa-address-card-o"></i> Adresa</label>
 						<input type="text" id="adr" name="address" class="form-control" value="'.$row["address1"].'" required>
 
@@ -140,12 +140,18 @@ span.price {
 					</div>';
 					$i=1;
 					$total=0;
+
+                    //number of product types from cart 
 					$total_count=$_POST['total_count'];
+                    
 					while($i<=$total_count){
 						$item_name_ = $_POST['item_name_'.$i];
-						$amount_ = $_POST['amount_'.$i];
+
+                        //price for a single product
+                        $amount_ = $_POST['amount_'.$i];
+
 						$quantity_ = $_POST['quantity_'.$i];
-						$total=$total+$amount_ ;
+						$total=$total+$amount_ * $quantity_ ;
 						$sql = "SELECT product_id FROM products WHERE product_title='$item_name_'";
 						$query = mysqli_query($con,$sql);
 						$row=mysqli_fetch_array($query);
@@ -209,7 +215,7 @@ span.price {
 						$amount_ = $_POST['amount_'.$i];
 						
 						$quantity_ = $_POST['quantity_'.$i];
-						$total=$total+$amount_ ;
+						$total=$total+ $amount_* $quantity_ ;
 						$sql = "SELECT product_id FROM products WHERE product_title='$item_name_'";
 						$query = mysqli_query($con,$sql);
 						$row=mysqli_fetch_array($query);

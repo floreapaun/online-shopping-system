@@ -8,7 +8,10 @@ if (isset($_SESSION["uid"])) {
 	$address = $_POST['address'];
     $zip= $_POST['zip'];
     $user_id=$_SESSION["uid"];
+
+    //how many products types are in cart
     $total_count=$_POST['total_count'];
+
     $prod_total = $_POST['total_price'];
     
     
