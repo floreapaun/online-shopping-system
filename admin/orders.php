@@ -1,5 +1,4 @@
-
-    <?php
+<?php
 session_start();
 include("../db.php");
 
@@ -11,7 +10,7 @@ $order_id=$_GET['order_id'];
 /*this is delet query*/
 mysqli_query($con,"delete from order_products where order_id='$order_id'")or die("delete query is incorrect...");
 mysqli_query($con,"delete from orders_info where order_id='$order_id'")or die("delete query is incorrect...");
-header("location: submit_form.php?success=5");
+header("location: orders.php?delete=1");
 } 
 
 ///pagination
@@ -39,9 +38,8 @@ include "topheader.php";
             </div>
             <div class="col-md-8 text-center">
               <?php
-                  if(isset($_POST['success'])) {
-                      $success = $_POST["success"];
-                      if (intval($success) == 5)
+                  if(isset($_REQUEST['delete'])) {
+                      if (intval($_REQUEST['delete']) == 1)
                           echo "<h3 style='color:#0C0'>Comanda a fost stearsa! &nbsp;&nbsp;  
                                 <span class='glyphicon glyphicon-remove'></span></h3>";
                   }

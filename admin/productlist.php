@@ -21,7 +21,7 @@ else
 {}
 /*this is delet query*/
 mysqli_query($con,"delete from products where product_id='$product_id'")or die("query is incorrect...");
-header("location: submit_form.php?success=4");
+header("location: productlist.php?delete=1");
 }
 
 ///pagination
@@ -49,9 +49,8 @@ include "topheader.php";
             </div>
             <div class="col-md-8 text-center">
               <?php
-                  if(isset($_POST['success'])) {
-                      $success = $_POST["success"];
-                      if (intval($success) == 4)
+                  if(isset($_REQUEST['delete'])) {
+                      if (intval($_REQUEST['delete']) == 1)
                           echo "<h3 style='color:#0C0'>Produsul a fost sters! &nbsp;&nbsp;  
                                 <span class='glyphicon glyphicon-remove'></span></h3>";
                   }

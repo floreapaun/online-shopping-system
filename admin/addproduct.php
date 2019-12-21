@@ -29,13 +29,13 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
                            values ('$product_cat','$brand','$product_name','$price','$details','$picture_name','$tags')") 
                            or die ("insert product query with error");
 
-        header("location: submit_form.php?success=1");
+        header("location: addproduct.php?success=1");
     }
     else
-        header("location: submit_form.php?success=2");
+        header("location: addproduct.php?error=1");
 }
 else
-    header("location: submit_form.php?success=3");
+    header("location: addproduct.php?error=2");
 
 mysqli_close($con);
 }
@@ -52,16 +52,18 @@ include "topheader.php";
             </div>
             <div class="col-md-8 text-center">
               <?php
-                if(isset($_POST['success'])) {
-                    $success = $_POST["success"];
-                    if (intval($success) == 1)
+                if(isset($_REQUEST['success'])) {
+                    if (intval($_REQUEST["success"]) == 1)
                         echo "<h3 style='color:#0C0'>Produsul a fost adaugat! &nbsp;&nbsp;  
                               <span class='glyphicon glyphicon-ok'></h3></span>";
-                    if (intval($success) == 2)
+                }
+                if(isset($_REQUEST['error'])) {
+                    $error = $_REQUEST['error'];
+                    if (intval($error) == 1)
                         echo "<h3 style='color:##FF000'>Produsul nu a fost adaugat! 
                               Imaginea e prea mare! &nbsp;&nbsp;  
                               <span class='glyphicon glyphicon-exclamation-sign'></h3></span>";
-                    if (intval($success) == 3)
+                    if (intval($error) == 2)
                         echo "<h3 style='color:##FF000'>Produsul nu a fost adaugat! 
                               Imaginea nu are formatul jpg/png/gif! &nbsp;&nbsp; 
                               <span class='glyphicon glyphicon-exclamation-sign'></h3></span>";
