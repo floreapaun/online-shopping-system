@@ -1,23 +1,25 @@
- <?php
+<?php
 session_start();
 include("../db.php");
-include "sidenav.php";
-include "topheader.php";
 if(isset($_POST['btn_save']))
 {
 $first_name=$_POST['first_name'];
 $last_name=$_POST['last_name'];
 $email=$_POST['email'];
 $user_password=$_POST['password'];
+$pw = password_hash($user_password, PASSWORD_BCRYPT);
 $mobile=$_POST['phone'];
-$address1=$_POST['city'];
-$address2=$_POST['country'];
+$address1=$_POST['address'];
+$address2=$_POST['zip'];
 
-mysqli_query($con,"insert into user_info(first_name, last_name,email,password,mobile,address1,address2) values ('$first_name','$last_name','$email','$user_password','$mobile','$address1','$address2')") 
+mysqli_query($con,"insert into user_info(first_name, last_name,email,password,mobile,address1,address2) values ('$first_name','$last_name','$email','$pw','$mobile','$address1','$address2')") 
 			or die ("Query 1 is inncorrect........");
-header("location: manage_users.php"); 
+header("location: manageuser.php?useradd=1"); 
 mysqli_close($con);
 }
+
+include "sidenav.php";
+include "topheader.php";
 
 
 ?>
@@ -73,14 +75,14 @@ mysqli_close($con);
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating">Oras</label>
-                          <input type="text" name="city" id="city"  class="form-control" required>
+                          <label for='address' class="bmd-label-floating">Adresa</label>
+                          <input type="text" name="address" id="address"  class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating">Adresa</label>
-                          <input type="text" name="country" id="country" class="form-control" required>
+                          <label for='zip' class="bmd-label-floating">Cod postal</label>
+                          <input type="text" name="zip" id="zip" class="form-control" required>
                         </div>
                       </div>
                       
