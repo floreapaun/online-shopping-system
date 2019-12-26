@@ -72,9 +72,11 @@ include "topheader.php";
                                 INNER JOIN user_info ON user_info.user_id = orders_info.user_id; 
                                "; 
                         $result = mysqli_query($con, $sql); 
-                        $rows = mysqli_fetch_all($result, MYSQLI_NUM);
+                        $rows = array();
 
-                        //print_r($arr);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          array_push($rows, array_values($row));
+                        }
 
                         $prod_ids = "";
 
