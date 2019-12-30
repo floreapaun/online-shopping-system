@@ -3,8 +3,6 @@ session_start();
 include "db.php";
 if (isset($_SESSION["uid"])) {
 
-	$f_name = $_POST["firstname"];
-	$email = $_POST['email'];
 	$address = $_POST['address'];
     $zip= $_POST['zip'];
     $user_id=$_SESSION["uid"];
@@ -31,9 +29,9 @@ if (isset($_SESSION["uid"])) {
     }
 
 	$sql = "INSERT INTO `orders_info` 
-	(`order_id`,`user_id`,`f_name`, `email`,`address`, 
+	(`order_id`,`user_id`, `address`, 
 	`zip`,`prod_count`,`total_amt`) 
-	VALUES ($order_id, '$user_id','$f_name','$email', 
+	VALUES ($order_id, '$user_id', 
     '$address', '$zip','$total_count','$prod_total')";
 
 

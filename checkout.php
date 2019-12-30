@@ -122,9 +122,9 @@ span.price {
 					<div class="col-50">
 						<h3>Adresa facturare</h3>
 						<label for="fname"><i class="fa fa-user" ></i> Nume Complet</label>
-						<input type="text" id="fname" class="form-control" name="firstname" pattern="^[a-zA-Z ]+$"  value="'.$row["first_name"].' '.$row["last_name"].'" disabled>
+						<input type="text" id="fname" class="form-control" name="firstname" pattern="^[a-zA-Z ]+$"  value="'.$row["first_name"].' '.$row["last_name"].'" readonly>
 						<label for="email"><i class="fa fa-envelope"></i> Email</label>
-						<input type="text" id="email" name="email" class="form-control" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9]+(\.[a-z]{2,4})$" value="'.$row["email"].'" required disabled>
+						<input type="text" id="email" name="email" class="form-control" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9]+(\.[a-z]{2,4})$" value="'.$row["email"].'" readonly>
 						<label for="adr"><i class="fa fa-address-card-o"></i> Adresa</label>
 						<input type="text" id="adr" name="address" class="form-control" value="'.$row["address1"].'" required>
 
