@@ -3,10 +3,10 @@ $(document).ready(function(){
     displaySuccessOrderMsg();
     
     function displaySuccessOrderMsg() {
-        console.log("x");
+        console.log("entered displaySuccessOrderMsg()");
     
         if (window.location.pathname == '/online-shopping-system/store.php') {
-            console.log("x");
+            console.log("pathname is /online-shopping-system/store.php");
             if (document.cookie.split(';').filter((item) => item.includes('ordercomplete=1')).length) {
                 var str = "	<div class='alert alert-success'>" +
                           "	<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a> " +
