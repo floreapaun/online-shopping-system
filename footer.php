@@ -25,11 +25,12 @@
                         <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
                         <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
                     </ul>
+                    <span class="delivery">
+                      Livrarea produselor costa 15 lei si este gratuita pentru comenzile mai mari de 299 lei.
+					</span>
                     <span class="copyright">
-								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> Toate drepturile rezervate
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							</span>
+					  Copyright &copy;<script>document.write(new Date().getFullYear());</script> Toate drepturile rezervate
+					</span>
                 </div>
 
                 <div class="col-md-3 col-xs-6">

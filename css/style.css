@@ -2114,10 +2114,14 @@ background: linear-gradient(to bottom, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, 
   color: #E71C23;
 }
 
-.copyright {
-  margin-top: 30px;
+.delivery {
   display: block;
   font-size: 12px;
+  margin-bottom: 30px;
+}
+
+.copyright {
+  display: block;
 }
 
 .footer-payments li {
