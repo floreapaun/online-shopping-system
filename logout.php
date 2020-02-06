@@ -10,7 +10,13 @@ unset($_SESSION["name"]);
 setcookie("auth", 0);
 
 $BackToMyPage = $_SERVER['HTTP_REFERER'];
-if(isset($BackToMyPage)) {
+
+//if on the administration panel redirect to index without 
+//checking for the referer page
+if ($_GET['adminpanel'])
+    header('Location: index.php'); 
+
+elseif (isset($BackToMyPage)) {
     header('Location: '.$BackToMyPage);
 } else {
     header('Location: index.php'); // default page

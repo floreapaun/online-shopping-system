@@ -64,17 +64,11 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="../logout.php">
+            <a class="nav-link" href="../logout.php?adminpanel=1">
               <i class="material-icons">logout</i>
               <p>Deconectare</p>
             </a>
           </li>
-          <!-- <li class="nav-item active-pro ">
-                <a class="nav-link" href="./upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li> -->
         </ul>
       </div>
     </div>
