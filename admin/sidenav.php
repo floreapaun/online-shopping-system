@@ -31,33 +31,42 @@
       </div>
       <div class="sidebar-wrapper ps-container ps-theme-default" data-ps-id="3a8db1f4-24d8-4dbf-85c9-4f5215c1b29a">
         <ul class="nav">
-          <li class="nav-item active">
+
+          <li class="nav-item 
+            <?php if(strpos($_SERVER['REQUEST_URI'], 'index')) echo " active"; ?>">
             <a class="nav-link" href="index.php">
               <i class="material-icons">dashboard</i>
               <p>Panou informatii</p>
             </a>
           </li>
-          <li class="nav-item">
+
+          <li class="nav-item 
+            <?php if(strpos($_SERVER['REQUEST_URI'], 'productlist')) echo " active"; ?>">
             <a class="nav-link" href="productlist.php">
               <i class="material-icons">list</i>
               <p>Lista produse</p>
             </a>
             
           </li>
-          
-          <li class="nav-item ">
+
+          <li class="nav-item 
+            <?php if(strpos($_SERVER['REQUEST_URI'], 'orders')) echo " active"; ?>">
             <a class="nav-link" href="orders.php">
               <i class="material-icons">library_books</i>
               <p>Comenzi</p>
             </a>
           </li>
-          <li class="nav-item ">
+
+          <li class="nav-item 
+            <?php if(strpos($_SERVER['REQUEST_URI'], 'addproduct')) echo " active"; ?>">
             <a class="nav-link" href="addproduct.php">
               <i class="material-icons">add</i>
               <p>Adauga produse</p>
             </a>
           </li>
-          <li class="nav-item ">
+
+          <li class="nav-item 
+            <?php if(strpos($_SERVER['REQUEST_URI'], 'manageuser')) echo " active"; ?>">
             <a class="nav-link" href="manageuser.php">
               <i class="material-icons">edit_user</i>
               <p>Modificare utilizatori</p>
