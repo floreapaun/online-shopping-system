@@ -108,7 +108,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
                     //if user is login from page we will send login_success
                     echo "login_success";
 
-                    echo "<script> location.href='admin/addproduct.php'; </script>";
+                    echo "<script> location.href='admin/index.php'; </script>";
                     exit;
 
                 }else{
