@@ -125,7 +125,6 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		$sql = "UPDATE cart SET user_id = '$_SESSION[uid]' WHERE ip_add='$ip_add' AND user_id = -1";
 		if(mysqli_query($con,$sql)){
 			echo "register_success";
-			echo "<script> location.href='store.php'; </script>";
             exit;
 		}
 		

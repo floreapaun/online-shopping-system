@@ -391,8 +391,9 @@ $(document).ready(function(){
 			data : $("#signup_form").serialize(),
 			success : function(data){
 				$(".overlay").hide();
-				if (data == "register_success") {
-					window.location.href = "cart.php";
+				if (data === "register_success") {
+                    document.cookie = "auth=1";
+					window.location.href = "store.php";
 				}else{
 					$("#signup_msg").html(data);
 				}
