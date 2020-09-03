@@ -1,12 +1,11 @@
 $(document).ready(function(){
-    
     displaySuccessOrderMsg();
     
     function displaySuccessOrderMsg() {
         console.log("entered displaySuccessOrderMsg()");
     
-        if (window.location.pathname == '/online-shopping-system/store.php') {
-            console.log("pathname is /online-shopping-system/store.php");
+        // if the current page is store.php
+        if (location.pathname.substring(location.pathname.lastIndexOf('/') + 1) === 'store.php') {
             if (document.cookie.split(';').filter((item) => item.includes('ordercomplete=1')).length) {
                 var str = "	<div class='alert alert-success'>" +
                           "	<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a> " +
@@ -56,7 +55,9 @@ $(document).ready(function(){
             if (urlParams.get('keyword') && urlParams.get('search')) {
                 console.log("entered checkforlink search");
                 console.log(window.location.pathname);
-                if (window.location.pathname == '/online-shopping-system/store.php') {
+
+                // if the current page is store.php
+                if (location.pathname.substring(location.pathname.lastIndexOf('/') + 1) === 'store.php') {
                     console.log("entered if checkforlink search");
                 
                     var keyword = urlParams.get('keyword');
@@ -83,7 +84,9 @@ $(document).ready(function(){
             if (urlParams.get('get_seleted_Category') && urlParams.get('cat_id')) {
                 console.log("pathname: ");
                 console.log(window.location.pathname);
-                if (window.location.pathname === '/online-shopping-system/store.php') {
+
+                // if the current page is store.php
+                if (location.pathname.substring(location.pathname.lastIndexOf('/') + 1) === 'store.php') {
                     console.log("entered if");
                     var get_seleted_Category = urlParams.get('get_seleted_Category');
                     var cat_id = urlParams.get('cat_id');                
