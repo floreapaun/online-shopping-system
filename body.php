@@ -256,24 +256,24 @@
 						<div class="products-widget-slick" data-nav="#slick-nav-3">
                             
                             <?php
-
+                                
+                                //get the top 4 sold products from the first category
                                 $query = "SELECT order_products.product_id, SUM(order_products.qty), product_cat, 
                                           product_image, product_title,  product_price FROM products 
                                           JOIN order_products ON order_products.product_id = products.product_id
                                           WHERE product_cat = 1
                                           GROUP BY order_products.product_id ORDER BY SUM(order_products.qty) DESC LIMIT 4;";
-                            
                                 $result = mysqli_query($con, $query);
                                 while ($row = $result->fetch_array()){
                                     $cat1_prod_rows[] = $row;
                                 }
-
                             ?>
 
 
 							<div id="get_product_home">
                                 
                                <?php
+                                    //print the first 2 products of the top 4 sold products from category one
                                     for ($i = 0; $i <= 1; $i++) {
                                         echo "<div class='product-widget'>
                                                 <a href='product.php?p=" . $cat1_prod_rows[$i]['product_id'] . "'> 
@@ -299,6 +299,7 @@
 							<div id="get_product_home2">
 
                                <?php
+                                    //print the last 2 products of the top 4 sold products from category one
                                     for ($i = 2; $i <= 3; $i++) {
                                         echo "<div class='product-widget'>
                                                 <a href='product.php?p=" . $cat1_prod_rows[$i]['product_id'] . "'> 
@@ -325,6 +326,7 @@
 
                     <?php
 
+                        //get the top 4 sold products from the second category
                         $query = "SELECT order_products.product_id, SUM(order_products.qty), product_cat, 
                                   product_image, product_title,  product_price FROM products 
                                   JOIN order_products ON order_products.product_id = products.product_id
@@ -348,7 +350,9 @@
 
 						<div class="products-widget-slick" data-nav="#slick-nav-4">
 							<div>
+
                                <?php
+                                    //print the first 2 products of the top 4 sold products from category two 
                                     for ($i = 0; $i <= 1; $i++) {
                                         echo "<div class='product-widget'>
                                                 <a href='product.php?p=" . $cat2_prod_rows[$i]['product_id'] . "'> 
@@ -368,10 +372,12 @@
                                               </div>";
                                     }
                               ?>
+
 							</div>
 
 							<div>
                                <?php
+                                    //print the last 2 products of the top 4 sold products from category two 
                                     for ($i = 2; $i <= 3; $i++) {
                                         echo "<div class='product-widget'>
                                                 <a href='product.php?p=" . $cat2_prod_rows[$i]['product_id'] . "'> 
@@ -401,6 +407,7 @@
 
                     <?php
 
+                        //get the top 4 sold products from the third category
                         $query = "SELECT order_products.product_id, SUM(order_products.qty), product_cat, 
                                   product_image, product_title,  product_price FROM products 
                                   JOIN order_products ON order_products.product_id = products.product_id
@@ -426,6 +433,7 @@
 							<div>
 
                                <?php
+                                    //print the first 2 products of the top 4 sold products from category three 
                                     for ($i = 0; $i <= 1; $i++) {
                                         echo "<div class='product-widget'>
                                                 <a href='product.php?p=" . $cat3_prod_rows[$i]['product_id'] . "'> 
@@ -451,6 +459,7 @@
 							<div>
 
                                <?php
+                                    //print the last 2 products of the top 4 sold products from category three
                                     for ($i = 2; $i <= 3; $i++) {
                                         echo "<div class='product-widget'>
                                                 <a href='product.php?p=" . $cat3_prod_rows[$i]['product_id'] . "'> 
