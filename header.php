@@ -105,7 +105,7 @@ session_start();
 		}
 		.glyphicon-chevron-right:before{
 			content:"\f054"
-		}
+        }
         </style>
 
     </head>
@@ -176,6 +176,7 @@ session_start();
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="/" class="logo">
+                                <img src='img/logo.png' alt='logo'/>
 								<font style="font-style:normal; font-size: 33px;color: aliceblue;font-family: serif">
                                         Roma Shop
                                     </font>

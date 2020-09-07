@@ -499,7 +499,7 @@ textarea.input {
 }
 
 .header-logo .logo img {
-  display: block;
+  display: inline;
 }
 
 /*----------------------------*\
@@ -2230,6 +2230,7 @@ background: linear-gradient(to bottom, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, 
   .header-logo .logo {
     display: inline-block;
   }
+
   #product-imgs {
     margin-bottom: 60px;
     margin-top: 15px;
