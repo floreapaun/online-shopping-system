@@ -1,6 +1,37 @@
 <?php
 session_start();
 
+//crons.php has a variable set with some time: 
+//the seconds passed from 1 jan 1970 to some date 
+$crons = @include 'crons.php';
+
+foreach ($crons as $script => $time) {
+
+    //if current time is bigger than time from the file
+    //the newsletter is sent to the users
+    if ($time < time()) {
+
+        //create lock to avoid race conditions
+        $lock = md5($script) . '.lock';
+        if (!mkdir($lock)) {
+            continue;
+        }
+
+        //start the script which sends the newsletter
+        include($script);
+
+        //update crons.php with the time when newsletter will be sent again
+        //if we want to send it once per month we sum all the seconds passed during a month
+        //one day has 24 hours, 31 days multiplied by 24 hours means 744 hours
+        //one hour has 3600 seconds, 744 hours multiplied by 3600 seconds means 2678400
+        $crons[$script] = time() + 2678400; 
+
+        file_put_contents('crons.php', '<?php return ' . var_export($crons, true) . '; ?' . '>');
+
+        // finally delete lock
+        rmdir($lock);
+    }
+}
 ?>
 
 <!DOCTYPE html>
