@@ -1,2 +1,2 @@
 # shop
-E-commerce web application.
+IT products e-commerce web application.
