@@ -1,1 +1,2 @@
-# online-shopping-system
+# shop
+General products e-commerce web application.
