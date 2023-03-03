@@ -8,23 +8,15 @@
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
                         <h3 class="footer-title">Despre noi</h3>
-                        <p>Roma Enterprise Shop Company</p>
+                        <p>Alpha Shop Company</p>
                         <ul class="footer-links">
-                            <li><a href="#"><i class="fa fa-map-marker"></i>Ploiesti</a></li>
-                            <li><a href="#"><i class="fa fa-phone"></i>0244 100 100</a></li>
-                            <li><a href="#"><i class="fa fa-envelope-o"></i>office@romashop.ro</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker"></i>Cluj</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>0100 100 100</a></li>
+                            <li><a href="#"><i class="fa fa-envelope-o"></i>office@alphashop.app</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-6 text-center" style="margin-top:80px;">
-                    <ul class="footer-payments">
-                        <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-                        <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
-                    </ul>
                     <span class="delivery">
                       Livrarea produselor costa 15 lei si este gratuita pentru comenzile mai mari de 299 lei.
 					</span>

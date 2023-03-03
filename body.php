@@ -12,13 +12,29 @@
 				<div class="row">
 					<!-- shop -->
 					<div class="col-md-4 col-xs-6">
-						<a href="product.php?p=78"><div class="shop">
+						<a href="product.php?p=74">
+							<div class="shop">
+								<div class="shop-img">
+									<img src="./img/product01.png" alt="">
+								</div>
+								<div class="shop-body">
+									<h3>Colectie<br>Laptop-uri</h3>
+									<a href="product.php?p=74" class="cta-btn"></a>
+								</div>
+							</div>
+						</a>
+					</div>
+					<!-- /shop -->
+
+					<!-- shop -->
+					<div class="col-md-4 col-xs-6">
+						<a href="product.php?p=119"><div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop01.png" alt="">
+								<img src="./img/tastaturaheivervg7501.jpg" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Colectie<br>Laptop-uri</h3>
-								<a href="product.php?p=78" class="cta-btn">Cumpara acum <i class="fa fa-arrow-circle-right"></i></a>
+								<h3>Colectie<br>Periferice</h3>
+								<a href="product.php?p=119" class="cta-btn"></a>
 							</div>
 						</div></a>
 					</div>
@@ -26,27 +42,13 @@
 
 					<!-- shop -->
 					<div class="col-md-4 col-xs-6">
-						<a href="product.php?p=72"><div class="shop">
+						<a href="product.php?p=117"><div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop03.png" alt="">
+								<img src="./img/samsungduronf100.jpg" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Colectie<br>Accesorii</h3>
-								<a href="product.php?p=72" class="cta-btn">Cumpara acum <i class="fa fa-arrow-circle-right"></i></a>
-							</div>
-						</div></a>
-					</div>
-					<!-- /shop -->
-
-					<!-- shop -->
-					<div class="col-md-4 col-xs-6">
-						<a href="product.php?p=79"><div class="shop">
-							<div class="shop-img">
-								<img src="./img/shop02.png" alt="">
-							</div>
-							<div class="shop-body">
-								<h3>Colectie<br>Camere de filmat</h3>
-								<a href="product.php?p=79" class="cta-btn">Cumpara acum <i class="fa fa-arrow-circle-right"></i></a>
+								<h3>Colectie<br>Desktop-uri</h3>
+								<a href="product.php?p=117" class="cta-btn"></a>
 							</div>
                             </div></a>
 					</div>
@@ -109,7 +111,7 @@
                         $cat_name = $row["cat_title"];
 
                         echo "
-								<div class='product'>
+								<div class='product' style='height: 380px;'>
 									<a href='product.php?p=$pro_id'><div class='product-img'>
 										<img src='product_images/$pro_image' style='max-height: 170px;' alt=''>
 									</div></a>
@@ -207,7 +209,7 @@
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
-				<div class="row">
+				<div class="row" style="height: 200px;">
 					<div class="col-md-4 col-xs-6">
 						<div class="section-title">
 							<h4 class="title"> <?php echo $cat_rows[0]["cat_title"]; ?></h4>

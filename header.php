@@ -10,7 +10,6 @@ foreach ($crons as $script => $time) {
     //if current time is bigger than time from the file
     //the newsletter is sent to the users
     if ($time < time()) {
-
         //create lock to avoid race conditions
         $lock = md5($script) . '.lock';
         if (!mkdir($lock)) {
@@ -42,7 +41,7 @@ foreach ($crons as $script => $time) {
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Roma Shop - Magazin de electrocasnice</title>
+		<title>Alpha Shop - Magazin IT</title>
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -73,11 +72,11 @@ foreach ($crons as $script => $time) {
 
     <style>
         #navigation {
-          background: #FF4E50;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #F9D423, #FF4E50);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #F9D423, #FF4E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-          
+          background: #F2ECEC;  /* fallback for old browsers */
+          border: 2px solid red;
+          border-radius: 25px;
+          width: 700px;
+          margin: 0 auto;
         }
         #header {
   
@@ -147,9 +146,9 @@ foreach ($crons as $script => $time) {
 			<div id="top-header">
 				<div class="container">
 					<ul class="header-links pull-left">
-						<li><a href="#"><i class="fa fa-phone"></i>0244 100 100</a></li>
-						<li><a href="#"><i class="fa fa-envelope-o"></i>office@romashop.ro</a></li>
-						<li><a href="#"><i class="fa fa-map-marker"></i>Ploiesti, Bulevardul Bucuresti, nr. 39</a></li>
+						<li><a href="#"><i class="fa fa-phone"></i>0100 100 100</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i>office@alphashop.app</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i>Cluj, Bulevardul Industriei, nr. 100</a></li>
 					</ul>
 					<ul class="header-links pull-right">
 
@@ -168,7 +167,6 @@ foreach ($crons as $script => $time) {
                                <div class="dropdownn">
                                   <a href="#" class="dropdownn" data-toggle="modal" data-target="#myModal" ><i class="fa fa-user-o"></i> Salut '.$row["first_name"].'</a>
                                   <div class="dropdownn-content">
-                                    <a href="" data-toggle="modal" data-target="#profile"><i class="fa fa-user-circle" aria-hidden="true" ></i>Profilul meu</a>
                                     <a href="logout.php"><i class="fa fa-sign-in" aria-hidden="true"></i>Iesi din cont</a>
                                     
                                   </div>
@@ -206,10 +204,10 @@ foreach ($crons as $script => $time) {
 						<!-- LOGO -->
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="/" class="logo">
+								<a href="/shop/" class="logo">
                                 <img src='img/logo.png' alt='logo'/>
 								<font style="font-style:normal; font-size: 33px;color: aliceblue;font-family: serif">
-                                        Roma Shop
+                                        Alpha Shop
                                     </font>
 									
 								</a>

@@ -1,3 +1,3 @@
 <?php return array (
-  'sendnewsletter.php' => 1,
+  'sendnewsletter.php' => 1680195137,
 ); ?>

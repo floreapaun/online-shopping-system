@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("../db.php");
-error_reporting(0);
+error_reporting(1);
 
 if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 {

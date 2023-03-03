@@ -58,7 +58,7 @@ Table OF Contents
 body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  background-image: linear-gradient(-134deg, #FFA62E 0%, #FB962E 20%, #F8852E 40%, #F3742D 60%, #EF612D 80%, #EA4D2C 100%);
+  background-image: linear-gradient(-134deg, #FFA62E 0%, #FB962E 20%, #F8852E 40%, #080706 60%, #1E1816 80%, #201E1E 100%);
     
 }
 
@@ -670,9 +670,9 @@ background: linear-gradient(to bottom, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, 
 ===========================================================*/
 
 #navigation {
-  background: #FFF;
+  background: #110e0e;
   border-bottom: 2px solid #E4E7ED;
-  border-top: 3px solid #D10024;
+  border-top: 3px solid #0f0c0c;
 }
 
 /*----------------------------*\
@@ -772,50 +772,6 @@ background: linear-gradient(to bottom, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, 
   margin: 15px 0px;
 }
 
-.shop:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0px;
-  width: 60%;
-  background: #12c2e9;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-
-
-
-
-
-
-  opacity: 0.9;
-  -webkit-transform: skewX(-45deg);
-  -ms-transform: skewX(-45deg);
-  transform: skewX(-45deg);
-}
-
-.shop:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 1px;
-  width: 100%;
- background: #12c2e9;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-
-
-  opacity: 0.9;
-  -webkit-transform: skewX(-45deg) translateX(-100%);
-  -ms-transform: skewX(-45deg) translateX(-100%);
-  transform: skewX(-45deg) translateX(-100%);
-}
-
 .shop .shop-img {
   position: relative;
   background-color: #E4E7ED;
@@ -843,11 +799,12 @@ background: linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10
 }
 
 .shop .shop-body h3 {
-  color: #FFF;
+  color: #851c1c;
 }
 
 .shop .shop-body .cta-btn {
-  color: #FFF;
+  
+  color: #dd3b3b;
   text-transform: uppercase;
 }
 
@@ -1321,7 +1278,7 @@ background: linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10
 }
 
 .noUi-connect {
-  background-color: #D10024;
+  background-color: yellow;
 }
 
 .noUi-horizontal {

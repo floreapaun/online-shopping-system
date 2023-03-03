@@ -64,15 +64,6 @@ include "header.php";
 						<div class="product-details">
 							<h2 class="product-name">'.$row['product_title'].'</h2>
 							<div>
-								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-							</div>
-							<div>
 								<h3 class="product-price">'.$row['product_price'].'lei</h3>
 								<span class="product-available">In stoc</span>
 							</div>'

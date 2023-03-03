@@ -30,13 +30,13 @@ if ($stmt = $con -> prepare($query)) {
 
             //username and password of the free gmail account which sends the emails
             $mail->Username = 'florea.user@gmail.com';                 
-            $mail->Password = 'rtflcrjgfkavpwqn';                          
+            $mail->Password = 'gnqwiknoyxjjkfis';                          
 
             $mail->SMTPSecure = 'ssl';                            
             $mail->Port = 465;
 
             //the sender 
-            $mail->setFrom('admin@romashop.com', 'Roma Costin'); 
+            $mail->setFrom('admin@alphashop.app', 'Administrator Alpha Shop'); 
 
             //the receiver
             $mail->addAddress($emailTo, 'Destinatar');     
@@ -53,10 +53,9 @@ if ($stmt = $con -> prepare($query)) {
             $mail->Body    = "<h1> Tehnologia ne ajuta sa traim! </h1>
                               <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQi
                                 s5IiYhTKY53_XNEC8JLFa07du9G_fI641w&usqp=CAU' style='display: block;'/>
-                              <p>Colosseumul pe vremuri insemna agitatie, emotie, sentimente, 
-                                 adrenalina pentru viata sau moarte. 
-                                 Ne putem bucura la fel, cu <a href='$url'>noile telefoane</a>
-                                 disponibile de astazi in magazinul Roma Shop!</p>";
+                              <p> 
+                                 Ne putem bucura de tehnologie cu <a href='$url'>noile telefoane</a>
+                                 disponibile de astazi in magazinul Alpha Shop!</p>";
 
             $mail->SMTPOptions = array(
                 'ssl' => array(
